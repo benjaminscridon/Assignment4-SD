@@ -73,11 +73,8 @@ public class StudentServlet extends AbstractServlet {
 	@Override
 	public String doDelete(RequestMessage message) {
 		String response = ResponseMessageEncoder.encode(StatusCode.NOT_ALLOWED);
-
-		// Get from the query values the desired id
 		String id = message.getQueryValues().get("id");
 
-		// Delete student from database and generate the response
 		if (null != id) {
 			boolean flag = studentDao.deleteStudent(Integer.parseInt(id));
 			if (flag == true) {
@@ -95,9 +92,11 @@ public class StudentServlet extends AbstractServlet {
 		String id = message.getSerializedObject();
 
 		if (null != id) {
-			Student student = studentDao.deleteStudent2(Integer.parseInt(id));
-			if (null != student) {
-				response = ResponseMessageEncoder.encode(StatusCode.OK, student);
+			Student resultStudent = studentDao.findStudent(Integer.parseInt(id));
+
+			if (null != resultStudent) {
+				studentDao.deleteStudent(resultStudent.getId());
+				response = ResponseMessageEncoder.encode(StatusCode.OK, resultStudent);
 			} else {
 				response = ResponseMessageEncoder.encode(StatusCode.NOT_FOUND);
 			}
