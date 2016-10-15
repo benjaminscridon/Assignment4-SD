@@ -4,6 +4,8 @@ import ro.tuc.dsrl.ds.handson.assig.one.client.entities.Student;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import java.awt.Color;
 import java.awt.event.ActionListener;
 
 /**
@@ -25,8 +27,10 @@ public class CatalogView extends JFrame {
 	private JTextField textIdDelete;
 	private JButton btnGet;
 	private JButton btnPost;
+	private JButton btnHttpDelete;
 	private JButton btnDelete;
 	private JTextArea textArea;
+	private JTextArea textAreaDelete;
 
 	public CatalogView() {
 		setTitle("HTTP Protocol simulator");
@@ -92,7 +96,7 @@ public class CatalogView extends JFrame {
 		textArea = new JTextArea();
 		textArea.setBounds(235, 131, 171, 120);
 		contentPane.add(textArea);
-		
+
 		designDeleteAction();
 	}
 
@@ -103,7 +107,11 @@ public class CatalogView extends JFrame {
 	public void addBtnPostActionListener(ActionListener e) {
 		btnPost.addActionListener(e);
 	}
-	
+
+	public void addBtnHttpDeleteActionListener(ActionListener e) {
+		btnHttpDelete.addActionListener(e);
+	}
+
 	public void addBtnDeleteActionListener(ActionListener e) {
 		btnDelete.addActionListener(e);
 	}
@@ -111,7 +119,7 @@ public class CatalogView extends JFrame {
 	public String getStudentId() {
 		return textId.getText();
 	}
-	
+
 	public String getStudentIdForDelete() {
 		return textIdDelete.getText();
 	}
@@ -132,20 +140,25 @@ public class CatalogView extends JFrame {
 		textArea.setText(student.toString());
 	}
 
+	public void printDeletedStudent(Student student) {
+		textAreaDelete.setText(student.toString());
+	}
+
 	public void clear() {
 		textId.setText("");
 		textFirstname.setText("");
 		textLastname.setText("");
 		textMail.setText("");
 		textIdDelete.setText("");
+		textArea.setText("");
 	}
 
 	private void designDeleteAction() {
-		JLabel lblDeleteStudentById = new JLabel("Delete student by id ");
+		JLabel lblDeleteStudentById = new JLabel("Delete student by id. ");
 		lblDeleteStudentById.setBounds(480, 11, 145, 14);
 		contentPane.add(lblDeleteStudentById);
 
-		JLabel lblIdDelete = new JLabel("Id");
+		JLabel lblIdDelete = new JLabel("ID");
 		lblIdDelete.setBounds(480, 36, 46, 14);
 		contentPane.add(lblIdDelete);
 
@@ -154,8 +167,20 @@ public class CatalogView extends JFrame {
 		contentPane.add(textIdDelete);
 		textIdDelete.setColumns(10);
 
+		btnHttpDelete = new JButton("HTTP DELETE");
+		btnHttpDelete.setBackground(Color.GREEN);
+		btnHttpDelete.setBounds(480, 65, 171, 23);
+		contentPane.add(btnHttpDelete);
+
 		btnDelete = new JButton("DELETE");
-		btnDelete.setBounds(480, 77, 89, 23);
+		btnDelete.setBackground(Color.RED);
+		btnDelete.setBounds(480, 90, 171, 23);
 		contentPane.add(btnDelete);
+
+		textAreaDelete = new JTextArea();
+		textAreaDelete.setEditable(false);
+		textAreaDelete.setBackground(Color.getColor("#EEEEEE"));
+		textAreaDelete.setBounds(480, 131, 171, 120);
+		contentPane.add(textAreaDelete);
 	}
 }

@@ -12,5 +12,5 @@ package ro.tuc.dsrl.ds.handson.assig.one.protocol.enums;
  *  invalid.
  */
 public enum ProtocolMethod {
-	POST, GET, DELETE;
+	POST, GET, DELETE, DELETE2;
 }

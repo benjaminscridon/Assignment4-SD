@@ -88,4 +88,22 @@ public class StudentServlet extends AbstractServlet {
 		}
 		return response;
 	}
+
+	@Override
+	public String doDelete2(RequestMessage message) {
+		String response = null;
+		String id = message.getSerializedObject();
+
+		if (null != id) {
+			Student student = studentDao.deleteStudent2(Integer.parseInt(id));
+			if (null != student) {
+				response = ResponseMessageEncoder.encode(StatusCode.OK, student);
+			} else {
+				response = ResponseMessageEncoder.encode(StatusCode.NOT_FOUND);
+			}
+		} else {
+			response = ResponseMessageEncoder.encode(StatusCode.BAD_REQUEST);
+		}
+		return response;
+	}
 }

@@ -41,6 +41,7 @@ public class CatalogController {
 
 		catalogView.addBtnGetActionListener(new GetActionListener());
 		catalogView.addBtnPostActionListener(new PostActionListener());
+		catalogView.addBtnHttpDeleteActionListener(new HttpDeleteActionListener());
 		catalogView.addBtnDeleteActionListener(new DeleteActionListener());
 	}
 
@@ -49,6 +50,13 @@ public class CatalogController {
 			catalogView.printStudent(student);
 		}
 	}
+	
+	public void printDeletedStudent(Student student) {
+		if (student != null) {
+			catalogView.printDeletedStudent(student);
+		}
+	}
+
 
 	public void displayErrorMessage(String message) {
 		catalogView.clear();
@@ -132,15 +140,16 @@ public class CatalogController {
 	}
 
 	/**
-	 * Provide functionality for the DELETE button.
+	 * Provide functionality for the DELETE button simulating DELETE - HTTP
+	 * method.
 	 */
-	class DeleteActionListener implements ActionListener {
+	class HttpDeleteActionListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			try {
 				int studentId = Integer.parseInt(catalogView.getStudentIdForDelete());
-				System.out.println("Id:" + studentId);
+
 				// encode the request: a DELETE request, with url "student?id=X"
 				// (passing id in url) and no object sent through
 				String encodedRequest = RequestMessageEncoder.encode(ProtocolMethod.DELETE, "student?id=" + studentId);
@@ -153,9 +162,41 @@ public class CatalogController {
 				} else {
 					displayErrorMessage("Status code " + decodedResponse.getStatusCode());
 				}
+			} catch (NumberFormatException ex) {
+				displayErrorMessage("Please enter a number!");
 			} catch (IOException ex) {
 				displayErrorMessage(ERROR_MESSAGE);
 				LOGGER.error("", ex);
+			}
+		}
+	}
+
+	/**
+	 * Provide functionality for the DELETE button.
+	 */
+	class DeleteActionListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			try {
+				int studentId = Integer.parseInt(catalogView.getStudentIdForDelete());
+				String encodedRequest = RequestMessageEncoder.encode(ProtocolMethod.DELETE2, "student", "" + studentId);
+
+				String response = serverConnection.sendRequest(encodedRequest);
+				ResponseMessage decodedResponse = ResponseMessageEncoder.decode(response);
+
+				if (decodedResponse.getStatusCode() == StatusCode.OK.getCode()) {
+					printDeletedStudent(decodedResponse.getDeserializedObject(Student.class));
+					displayInfoMessage("Deleted successfully!\nStatus code:" + decodedResponse.getStatusCode() + ".");
+				} else {
+					displayErrorMessage("Status code " + decodedResponse.getStatusCode());
+				}
+
+			} catch (NumberFormatException ex) {
+				displayErrorMessage("Please enter a number!");
+			} catch (IOException e1) {
+				displayErrorMessage(ERROR_MESSAGE);
+				LOGGER.error("", e1);
 			}
 		}
 	}

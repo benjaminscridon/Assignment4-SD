@@ -107,4 +107,28 @@ public class StudentDAO {
 		}
 		return true;
 	}
+
+	public Student deleteStudent2(int id) {
+		Session session = factory.openSession();
+		Transaction tx = null;
+		Student student = null;
+
+		try {
+			student = findStudent(id);
+
+			tx = session.beginTransaction();
+			if (null != student) {
+				session.delete(student);
+			}
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			LOGGER.error("", e);
+		} finally {
+			session.close();
+		}
+		return student;
+	}
 }
