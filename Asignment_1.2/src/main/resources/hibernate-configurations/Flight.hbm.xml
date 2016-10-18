@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="ro.ds.assignment.two.airline.domain.Flight" table="flight">
+		<meta attribute="class-description">
+			This class contains the flights.
+		</meta>
+
+		<id name="id" type="int" column="id">
+			<generator class="native" />
+		</id>
+
+		<property name="flightNumber" column="flight_number" type="string" />
+		<property name="airplaneType" column="airplane_type" type="string" />
+		<property name="departureCityId" column="departure_city_id"	type="int" />
+		<property name="departureTime" column="departure_time" type="date" />
+		<property name="arrivalCityId" column="arrival_city_id" type="int" />
+		<property name="arrivalTime" column="arrival_time" type="date" />
+	</class>
+</hibernate-mapping>
