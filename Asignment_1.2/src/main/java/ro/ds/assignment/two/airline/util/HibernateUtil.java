@@ -1,4 +1,4 @@
-package ro.ds.assignment.two.airline.businesslogic;
+package ro.ds.assignment.two.airline.util;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -26,12 +26,12 @@ public class HibernateUtil {
 			tx = session.beginTransaction();
 			if (session.isOpen()) {
 				
-				Account a =new Account();
-				a.setPassword("password");
-				a.setRole("administrator");
-				a.setUsername("username_4124");
+				Account account =new Account();
+				account.setPassword("password");
+				account.setRole("administrator");
+				account.setUsername("username_4126699904");
 				
-				int i =  (Integer) session.save(a);
+				int i =  (Integer) session.save(account);
 				
 				System.out.println("Success."+ i);
 			}
