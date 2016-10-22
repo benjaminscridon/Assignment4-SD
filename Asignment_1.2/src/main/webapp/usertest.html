@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Flights</title>
+
+
+
+<link rel="stylesheet" href="resources/css/user-style.css">
+<link rel="stylesheet" href="resources/css/bootstrap.css">
+
+
+<!--  jQuery -->
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+
+<script>
+	$(document).ready(
+			function() {
+				var date_input = $('input[name="date"]'); //our date input has the name "date"
+				var container = $('.bootstrap-iso form').length > 0 ? $(
+						'.bootstrap-iso form').parent() : "body";
+				var options = {
+					format : 'mm/dd/yyyy',
+					container : container,
+					todayHighlight : true,
+					autoclose : true,
+				};
+				date_input.datepicker(options);
+			})
+</script>
+
+
+</head>
+
+<body>
+	<div class="form">
+		<div class="thumbnail">
+			<img src="resources/images/loupe.svg" />
+		</div>
+
+		<form class="login-form">
+		<label class="control-label"><span class="required">*&nbsp;</span>Departure City</label>
+			<input class="form-control" type="text" placeholder="Departure city" />
+			
+			
+			
+			<div class="form-group">
+				<!-- Date input -->
+				<label class="control-label" for="date"><span class="required">*&nbsp;</span>Departure Date</label> <input
+					class="form-control" id="date" name="date" placeholder="MM/DD/YYY"
+					type="text" />
+			</div>
+
+			
+			
+			
+			
+			
+			<label class="control-label"><span class="required">*&nbsp;</span>Arrival City</label>
+			 <input class="form-control"	type="text" placeholder="Arrival city" />
+
+
+
+
+
+			
+			<div class="form-group">
+				<!-- Date input -->
+				<label class="control-label" for="date"><span class="required">*&nbsp;</span>Arrival Date</label> <input
+					class="form-control" id="date" name="date" placeholder="MM/DD/YYY"
+					type="text" />
+			</div>
+
+			
+
+
+
+			<button>Search</button>
+			
+		</form>
+
+	</div>
+
+
+	<div class="footer">
+		<p>Copyright &#169; 2016 | Site built by by Beniamin Scridon
+			&#9992; &#9992; &#9992;</p>
+	</div>
+
+</body>
+</html>

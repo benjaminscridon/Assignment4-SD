@@ -1,12 +1,14 @@
 package ro.ds.assignment.two.airline.util;
 
+import javax.faces.component.UIColumn;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import ro.ds.assignment.two.airline.domain.Account;
-
+import ro.ds.assignment.two.airline.domain.Flight;
 
 /**
  * 
@@ -17,23 +19,30 @@ public class HibernateUtil {
 
 	public static void main(String[] args) {
 
-		SessionFactory factory = new Configuration().configure("/hibernate-configurations/hibernate.cfg.xml")
-				.buildSessionFactory();
+		SessionFactory factory = new Configuration()
+										.configure("/hibernate-configurations/hibernate.cfg.xml")
+										.buildSessionFactory();
 
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
 			if (session.isOpen()) {
+
+				Flight flight =  session.load(Flight.class, 1);
+				if(flight !=null)
+					System.out.println("Success1.");
+
+				 Account account=new Account();
+				 account.setUsername("benjamin");
+				 account.setPassword("passworda");
+				 account.setRole("adminadmin");
 				
-				Account account =new Account();
-				account.setPassword("password");
-				account.setRole("administrator");
-				account.setUsername("username_4126699904");
+				 
+				 int id = (Integer) session.save(account);
+				System.out.println("Success2."+id);
 				
-				int i =  (Integer) session.save(account);
-				
-				System.out.println("Success."+ i);
+				System.out.println(session.get(Account.class, id));
 			}
 			tx.commit();
 		} catch (Exception e) {
