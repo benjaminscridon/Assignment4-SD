@@ -1,0 +1,16 @@
+.header {
+	background:rgba(255, 255, 255, 0.99);
+	text-align:center;
+	height:55px;	
+}
+
+.icon {
+	color: rgba(0, 0, 0, 0.7);
+	font-size: 35px;
+	padding: 10px 15px;
+	
+}
+
+.icon:hover {
+	color: gray;
+}

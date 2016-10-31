@@ -9,6 +9,8 @@
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/airline</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">123456</property>
+		<property name="hibernate.enable_lazy_load_no_trans">true</property>
+		
 
 		<mapping resource="/hibernate-configurations/Flight.hbm.xml" />
 		<mapping resource="/hibernate-configurations/City.hbm.xml" />

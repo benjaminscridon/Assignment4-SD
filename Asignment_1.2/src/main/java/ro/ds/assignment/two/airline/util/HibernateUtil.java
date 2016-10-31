@@ -1,14 +1,7 @@
 package ro.ds.assignment.two.airline.util;
 
-import javax.faces.component.UIColumn;
-
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-
-import ro.ds.assignment.two.airline.domain.Account;
-import ro.ds.assignment.two.airline.domain.Flight;
 
 /**
  * 
@@ -17,41 +10,18 @@ import ro.ds.assignment.two.airline.domain.Flight;
  */
 public class HibernateUtil {
 
-	public static void main(String[] args) {
+	private static SessionFactory sessionFactory;
 
-		SessionFactory factory = new Configuration()
-										.configure("/hibernate-configurations/hibernate.cfg.xml")
-										.buildSessionFactory();
-
-		Session session = factory.openSession();
-		Transaction tx = null;
-		try {
-			tx = session.beginTransaction();
-			if (session.isOpen()) {
-
-				Flight flight =  session.load(Flight.class, 1);
-				if(flight !=null)
-					System.out.println("Success1.");
-
-				 Account account=new Account();
-				 account.setUsername("benjamin");
-				 account.setPassword("passworda");
-				 account.setRole("adminadmin");
-				
-				 
-				 int id = (Integer) session.save(account);
-				System.out.println("Success2."+id);
-				
-				System.out.println(session.get(Account.class, id));
-			}
-			tx.commit();
-		} catch (Exception e) {
-			if (tx != null)
-				tx.rollback();
-			e.printStackTrace();
-		} finally {
-			session.close();
-
+	public static SessionFactory getSessionFactory(){
+		if(sessionFactory == null){
+			init();
 		}
+		return sessionFactory;
+	}
+	
+	private static void init(){
+		sessionFactory = new Configuration()
+				.configure("/hibernate-configurations/hibernate.cfg.xml")
+				.buildSessionFactory();
 	}
 }

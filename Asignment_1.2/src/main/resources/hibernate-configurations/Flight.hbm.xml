@@ -14,9 +14,20 @@
 
 		<property name="flightNumber" column="flight_number" type="string" />
 		<property name="airplaneType" column="airplane_type" type="string" />
-		<property name="departureCityId" column="departure_city_id"	type="int" />
-		<property name="departureTime" column="departure_time" type="date" />
-		<property name="arrivalCityId" column="arrival_city_id" type="int" />
-		<property name="arrivalTime" column="arrival_time" type="date" />
+		
+		<many-to-one name="departureCity"
+			class="ro.ds.assignment.two.airline.domain.City" fetch="select">
+			<column name="departure_city_id" not-null="true"></column>
+		</many-to-one>
+		
+		<property name="departureDateTime" column="departure_time" type="java.util.Date" />
+		
+		<many-to-one name="arrivalCity"
+			class="ro.ds.assignment.two.airline.domain.City" fetch="select">
+			<column name="arrival_city_id" not-null="true"></column>
+		</many-to-one>
+		
+		<property name="arrivalDateTime" column="arrival_time" type="java.util.Date" />
+
 	</class>
 </hibernate-mapping>

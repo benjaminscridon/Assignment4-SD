@@ -12,10 +12,10 @@ public class Flight {
 	private int id;
 	private String flightNumber;
 	private String airplaneType;
-	private int departureCityId;
-	private Date departureTime;
-	private int arrivalCityId;
-	private Date arrivalTime;
+	private City departureCity;
+	private Date departureDateTime;
+	private City arrivalCity;
+	private Date arrivalDateTime;
 
 	public Flight() {
 	}
@@ -44,35 +44,47 @@ public class Flight {
 		this.airplaneType = airplaneType;
 	}
 
-	public int getDepartureCityId() {
-		return departureCityId;
+	public City getDepartureCity() {
+		return departureCity;
 	}
 
-	public void setDepartureCityId(int departureCityId) {
-		this.departureCityId = departureCityId;
+	public void setDepartureCity(City departureCity) {
+		this.departureCity = departureCity;
 	}
 
-	public Date getDepartureTime() {
-		return departureTime;
+	public Date getDepartureDateTime() {
+		return departureDateTime;
 	}
 
-	public void setDepartureTime(Date departureTime) {
-		this.departureTime = departureTime;
+	public void setDepartureDateTime(Date departureDateTime) {
+		this.departureDateTime = departureDateTime;
 	}
 
-	public int getArrivalCityId() {
-		return arrivalCityId;
+	public City getArrivalCity() {
+		return arrivalCity;
 	}
 
-	public void setArrivalCityId(int arrivalCityId) {
-		this.arrivalCityId = arrivalCityId;
+	public void setArrivalCity(City arrivalCity) {
+		this.arrivalCity = arrivalCity;
 	}
 
-	public Date getArrivalTime() {
-		return arrivalTime;
+	public Date getArrivalDateTime() {
+		return arrivalDateTime;
 	}
 
-	public void setArrivalTime(Date arrivalTime) {
-		this.arrivalTime = arrivalTime;
+	public void setArrivalDateTime(Date arrivalDateTime) {
+		this.arrivalDateTime = arrivalDateTime;
 	}
+
+	@Override
+	public String toString() {
+		return "Flight [id=" + id + ", flightNumber=" + flightNumber + ", airplaneType=" + airplaneType
+				+ ", departureCity=" + departureCity + ", departureDateTime=" + departureDateTime + ", arrivalCity="
+				+ arrivalCity + ", arrivalDateTime=" + arrivalDateTime + "]";
+	}
+
+	
+
+	
+
 }
