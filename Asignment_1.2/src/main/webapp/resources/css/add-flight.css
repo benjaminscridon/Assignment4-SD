@@ -1,14 +1,15 @@
 .form {
 	position: relative;
 	z-index: 1;
-	margin-top:60px;
+	margin-top:20px;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 	
 	background: #FFFFFF;
-		background:rgba(255, 255, 255, 0.8);
+		background:rgba(0, 0, 0, 0.5);
+		color:white;
 	padding:10px;
 
 }

@@ -15,11 +15,10 @@ public class CommonDAO<T> {
 	private Session session;
 
 	public List<?> findAll(Class<?> clazz) throws RepositoryException {
-		session = HibernateUtil.getSessionFactory().openSession();
-		
 		List<?> objects = null;
+
 		try {
-			transaction = session.beginTransaction();
+			startOperation();
 			Query query = session.createQuery("FROM " + clazz.getName());
 			objects = query.list();
 			transaction.commit();
@@ -27,10 +26,61 @@ public class CommonDAO<T> {
 			if (null != transaction) {
 				transaction.rollback();
 			}
-			throw new RepositoryException();
+			// /throw new RepositoryException(e);
 		} finally {
 			session.close();
 		}
 		return objects;
+	}
+
+	public void saveOrUpdate(Object object) throws RepositoryException {
+		try {
+			startOperation();
+			session.saveOrUpdate(object);
+			transaction.commit();
+		} catch (HibernateException exc) {
+			if (null != transaction) {
+				transaction.rollback();
+			}
+			// throw new RepositoryException(exc);
+		} finally {
+			session.close();
+		}
+	}
+
+	 public Object find(Class clazz, int id) {
+	        Object obj = null;
+	        try {
+	            startOperation();
+	            obj = session.load(clazz, id);
+	            transaction.commit();
+	        } catch (HibernateException e) {
+	        	
+	        } finally {
+	        	session.close();
+	        }
+	        return obj;
+	    }
+
+	
+	
+	public void delete(Object obj) {
+		try {
+			startOperation();
+			session.delete(obj);
+			transaction.commit();
+		} catch (HibernateException e) {
+			if (null != transaction) {
+				transaction.rollback();
+			}
+			// throw new RepositoryException(e);
+		} finally {
+			session.close();
+		}
+	}
+
+	protected void startOperation() throws HibernateException {
+		session = HibernateUtil.getSessionFactory().openSession();
+		transaction = session.beginTransaction();
 	}
 }

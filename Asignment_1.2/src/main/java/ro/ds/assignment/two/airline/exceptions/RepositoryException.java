@@ -1,5 +1,6 @@
 package ro.ds.assignment.two.airline.exceptions;
 
+
 public class RepositoryException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
@@ -14,5 +15,9 @@ public class RepositoryException extends RuntimeException {
 	
 	public RepositoryException(String message, Throwable cause) {
 		super(message, cause);
+	}
+
+	public RepositoryException(Throwable cause) {
+		super(cause);
 	}
 }

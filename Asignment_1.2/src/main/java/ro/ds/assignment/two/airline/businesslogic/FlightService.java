@@ -1,11 +1,10 @@
 package ro.ds.assignment.two.airline.businesslogic;
 
 import java.util.List;
-
-import org.hibernate.cfg.Configuration;
-
-import ro.ds.assignment.two.airline.dao.FlightDAO;
+import ro.ds.assignment.two.airline.dao.CommonDAO;
 import ro.ds.assignment.two.airline.domain.Flight;
+import ro.ds.assignment.two.airline.exceptions.RepositoryException;
+import ro.ds.assignment.two.airline.exceptions.ServiceException;
 
 /**
  * 
@@ -14,20 +13,37 @@ import ro.ds.assignment.two.airline.domain.Flight;
  */
 public class FlightService {
 
-	private FlightDAO flightDAO;
+	private CommonDAO<Flight> commonDAO;
 
 	public FlightService() {
+		commonDAO = new CommonDAO<Flight>();
 	}
 
-	public List<Flight> getAllFlights() {
-		if (null == flightDAO) {
-			flightDAO = new FlightDAO(
-					new Configuration()
-					.configure("/hibernate-configurations/hibernate.cfg.xml")
-					.buildSessionFactory());
+	public void addFlight(Flight flight) throws ServiceException {
+		try {
+			commonDAO.saveOrUpdate(flight);
+		} catch (RepositoryException exc) {
+			throw new ServiceException("Aici modific, pentru data integrity Violation -invalid flight number");
 		}
-		
-		return flightDAO.getAll();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Flight> getAllFlights() throws ServiceException {
+		List<Flight> flights = null;
+		try {
+			flights = (List<Flight>) commonDAO.findAll(Flight.class);
+		} catch (RepositoryException exc) {
+			throw new ServiceException("Something went wrong, please try again!");
+		}
+		return flights;
+	}
+	
+	public void deleteFlight(Flight flight){
+		try{
+			commonDAO.delete(commonDAO.find(Flight.class, flight.getId()));
+		}catch(RepositoryException exc){
+			throw new ServiceException("There is a problem to delete selected flight.");
+		}
 	}
 
 }

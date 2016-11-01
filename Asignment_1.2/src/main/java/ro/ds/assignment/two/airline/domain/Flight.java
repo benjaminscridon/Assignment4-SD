@@ -20,6 +20,16 @@ public class Flight {
 	public Flight() {
 	}
 
+	public Flight(String flightNumber, String airplaneType, City departureCity, Date departureDateTime,
+			City arrivalCity, Date arrivalDateTime) {
+		this.flightNumber = flightNumber;
+		this.airplaneType = airplaneType;
+		this.departureCity = departureCity;
+		this.departureDateTime = departureDateTime;
+		this.arrivalCity = arrivalCity;
+		this.arrivalDateTime = arrivalDateTime;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -82,9 +92,5 @@ public class Flight {
 				+ ", departureCity=" + departureCity + ", departureDateTime=" + departureDateTime + ", arrivalCity="
 				+ arrivalCity + ", arrivalDateTime=" + arrivalDateTime + "]";
 	}
-
-	
-
-	
 
 }

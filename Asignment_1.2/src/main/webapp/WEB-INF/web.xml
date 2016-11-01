@@ -51,4 +51,24 @@
     <servlet-name>AddFlightServlet</servlet-name>
     <url-pattern>/add-flight</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExceptionHandler</display-name>
+    <servlet-name>ExceptionHandler</servlet-name>
+    <servlet-class>ro.ds.assignment.two.airline.presentation.ExceptionHandler</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExceptionHandler</servlet-name>
+    <url-pattern>/ExceptionHandler</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminHomeServlet</display-name>
+    <servlet-name>AdminHomeServlet</servlet-name>
+    <servlet-class>ro.ds.assignment.two.airline.presentation.admin.AdminHomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminHomeServlet</servlet-name>
+    <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
 </web-app>
