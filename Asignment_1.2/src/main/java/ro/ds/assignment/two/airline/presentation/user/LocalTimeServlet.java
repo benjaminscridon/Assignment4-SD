@@ -14,24 +14,10 @@ import org.json.simple.parser.ParseException;
 
 import ro.ds.assignment.two.airline.util.CityWebService;
 
-/**
- * Servlet implementation class LocalTimeServlet
- */
 public class LocalTimeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public LocalTimeServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String city = request.getParameter("city");
@@ -70,7 +56,8 @@ public class LocalTimeServlet extends HttpServlet {
 				+ "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
 
 				+ "<link rel=\"stylesheet\" href=\"resources/css/template.css\">"
-				+ "<link rel=\"stylesheet\" href=\"resources/css/city-details.css\">"
+				+ "<link rel=\"stylesheet\" href=\"resources/css/footer.css\">"
+				+ "<link rel=\"stylesheet\" href=\"resources/css/local-time.css\">"
 				+ "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" />"
 				+ "</head>"
 				

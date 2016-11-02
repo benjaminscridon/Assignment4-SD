@@ -1,0 +1,20 @@
+.form {
+	position: relative;
+	z-index: 1;
+	margin-top:40px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	
+	background: #FFFFFF;
+		background:rgba(255, 255, 255, 0.8);
+	padding:10px;
+
+}
+
+.right-label{
+	text-align:right;
+	font-family:Verdana;
+	font-size: 18px;
+}

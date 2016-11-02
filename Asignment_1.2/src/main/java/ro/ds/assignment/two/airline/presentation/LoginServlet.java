@@ -19,40 +19,43 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		System.out.println("Session" + session);
-		if(session!=null ){
-			System.out.println("nothing to tdo ");
-		
-		
-		}else{
-			 response.sendRedirect("login.html");
-		}
-		
+		System.out.println("LoginServlet> -Session" + session);
+		/*
+		 * if(session!=null ){ System.out.println("nothing to tdo ");
+		 * response.sendRedirect("login.html");
+		 * 
+		 * }else{ response.sendRedirect("login.html"); }
+		 */
+		response.sendRedirect("login.html");
+
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String username = request.getParameter("username");
-		String password = request.getParameter("password"); 
-		System.out.println("DO POST  "+username + "  "+password);
-		System.out.println(getAccountService().isValidAccount(new Account(username,password)));
-		
-		//daca nu il gasesc afisez un mesaj cu date invalide
-		
-		HttpSession session = request.getSession(true);
-		session.setAttribute("username", username);
-		
-		if(getAccountService().isValidAccount(new Account(username,password)).toLowerCase().equals("admin")){
-			response.sendRedirect("admin/home");
-			session.setAttribute("admin", Boolean.TRUE);
+		String password = request.getParameter("password");
+
+		String role = getAccountService().isValidAccount(new Account(username, password));
+		System.out.println("LoginServlet> role:" + role);
+		if (null != role) {
+
+			HttpSession session = request.getSession(true);
+			session.setAttribute("username", username);
+
+			if (role.equals("admin")) {
+				response.sendRedirect("admin/home");
+				session.setAttribute("admin", Boolean.TRUE);
+
+			}
+			else{
+				response.sendRedirect("user");
+			}
+		} else {
+			response.sendRedirect("login.html");
 		}
-		else{
-			//session.setAttribute("role", "user");
-			response.sendRedirect("user"); 
-		}
-			
 	}
-	
+
 	private AccountService getAccountService() {
 		if (null == accountService) {
 			accountService = new AccountService();

@@ -32,7 +32,7 @@ public class AdminHomeServlet extends HttpServlet {
 			// database
 		}
 
-		request.getRequestDispatcher("admin.jsp").forward(request, response);
+		request.getRequestDispatcher("home.jsp").forward(request, response);
 	}
 
 	@Override
@@ -44,9 +44,9 @@ public class AdminHomeServlet extends HttpServlet {
 			flight.setId(Integer.parseInt(request.getParameter("flightId")));
 			getFlightService().deleteFlight(flight);
 
-			response.sendRedirect("admin?success=" + URLEncoder.encode("Flight was successfully deleted.", "UTF-8"));
+			response.sendRedirect("home?success=" + URLEncoder.encode("Flight was successfully deleted.", "UTF-8"));
 		} catch (ServiceException exc) {
-			response.sendRedirect("admin?error=" + URLEncoder.encode("There was a problem to delete selected flight.", "UTF-8"));
+			response.sendRedirect("home?error=" + URLEncoder.encode("There was a problem to delete selected flight.", "UTF-8"));
 		}
 	}
 

@@ -1,7 +1,9 @@
 package ro.ds.assignment.two.airline.businesslogic;
 
+import antlr.CommonAST;
 import ro.ds.assignment.two.airline.dao.AccountDAO;
 import ro.ds.assignment.two.airline.domain.Account;
+import ro.ds.assignment.two.airline.domain.Flight;
 import ro.ds.assignment.two.airline.util.HibernateUtil;
 
 public class AccountService {
@@ -26,5 +28,4 @@ public class AccountService {
 		}
 		return null;
 	}
-
 }

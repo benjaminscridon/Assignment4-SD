@@ -45,5 +45,16 @@ public class FlightService {
 			throw new ServiceException("There is a problem to delete selected flight.");
 		}
 	}
+	
+	public Flight findFlight(int id){
+		try{
+			System.out.println("Id :"+id);
+			return (Flight) commonDAO.find(Flight.class, id);
+		}catch(RepositoryException exc){
+			System.out.println("Mareee baii");
+			throw new ServiceException("Flight not found..");
+		}
+	}
+	
 
 }

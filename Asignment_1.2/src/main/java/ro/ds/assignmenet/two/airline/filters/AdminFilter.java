@@ -24,7 +24,21 @@ public class AdminFilter implements Filter {
 		
 		HttpSession session = httpRequest.getSession();
 		
+		
 		boolean isUserAdmin = session != null
+                && (session.getAttribute("admin") == Boolean.TRUE);
+		
+		if(isUserAdmin){
+				chain.doFilter(request, response);	
+		}
+		else{
+			httpResponse.sendRedirect(httpRequest.getContextPath() + "/not-allowed.html");
+			return;
+			//request.getRequestDispatcher("notAllowed.html").forward(httpRequest, httpResponse);
+		}
+	}
+		
+		/*boolean isUserAdmin = session != null
                 && (session.getAttribute("admin") == Boolean.TRUE);
 		
 		if(isUserAdmin){
@@ -35,9 +49,8 @@ public class AdminFilter implements Filter {
 			httpResponse.sendRedirect(httpRequest.getContextPath() + "/not-allowed.html");
 			return;
 			//request.getRequestDispatcher("notAllowed.html").forward(httpRequest, httpResponse);
-		}
+		}*/
 	
-	}
 	public void init(FilterConfig fConfig) throws ServletException {
 	}
 

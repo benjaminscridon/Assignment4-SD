@@ -1,0 +1,15 @@
+footer {
+	position: relative;
+	
+	z-index: -1;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	font-size: 14px;
+	text-align: center;
+	color: Dark;
+	background: #f4f4f4;
+	background: 	rgba(255, 255, 255, 0.99);
+	padding: 15px;
+	margin-top:52%;
+}

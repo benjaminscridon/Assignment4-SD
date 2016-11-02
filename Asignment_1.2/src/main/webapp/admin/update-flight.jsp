@@ -70,20 +70,20 @@
 
 	<div class="col-md-4 form">
 		<div>
-			<h3 class="right-label">Add New Flight</h3>
+			<h3 class="right-label">Update Flight</h3>
 		</div>
 
-		<form action="add-flight" method="POST">
+		<form action="update-flight" method="POST">
 			<div class="form-group">
 				<label class="control-label">Flight Number</label> <input
 					type="text" class="form-control" name="flightNumber"
-					id="flightNumber" required="required">
+					id="flightNumber" required="required" value="${flight.flightNumber}">
 			</div>
 
 			<div class="form-group">
 				<label class="control-label">Airline Type</label> <input type="text"
 					class="form-control" name="airplaneType" id="airplaneType"
-					required="required">
+					required="required" value="${flight.airplaneType}">
 			</div>
 
 			<div class="form-group">
@@ -117,7 +117,7 @@
 			</div>
 
 			<div class="form-group">
-				<button class="btn btn-success " name="submit" type="submit">Add
+				<button class="btn btn-success " name="submit" type="submit">Update
 					Flight</button>
 			</div>
 		</form>

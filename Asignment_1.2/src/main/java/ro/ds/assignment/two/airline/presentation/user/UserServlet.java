@@ -38,9 +38,7 @@ public class UserServlet extends HttpServlet {
 		printHeader(out);
 		printSearchForm(out);
 
-		// Print table
-
-		out.print("<div class =\"col-sm-9\">");
+		out.print("<div class =\"col-md-9\">");
 		out.print("<table class=\"table table-hover\">");
 		out.print("<thead>");
 		out.print("<tr>");
@@ -64,20 +62,12 @@ public class UserServlet extends HttpServlet {
 					"<tr>" 
 		            +	"<td>" + flight.getFlightNumber() + "</td>" 
 		            
-					+ 	"<td class=\"city-label\"><a href=\"local-time?city=" + flight.getDepartureCity().getName() + "\">" + flight.getDepartureCity().getName() + "</a></td>" 
+					+ 	"<td><a href=\"local-time?city=" + flight.getDepartureCity().getName() + "\"" +"class=\"city-label\">"+ flight.getDepartureCity().getName() + "</a></td>" 
 					+ 	"<td> 	&#128197; " + dateFormat.format(flight.getDepartureDateTime()) 
 					+ 			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#128336; " + timeFormat.format(flight.getDepartureDateTime()) + "</td>"
 					+ 	"<td><a href=\"local-time?city=" + flight.getArrivalCity().getName() + "\""+  " class=\"city-label\">" + flight.getArrivalCity().getName() + "</td>" 
 					+ 	"<td> 	&#128197; " + dateFormat.format(flight.getArrivalDateTime()) 
 					+ 			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#128336; " + timeFormat.format(flight.getArrivalDateTime()) + "</td>"
-					
-					//+   "<td>"
-					//+   "<div class=\"center\">"
-					//+ "<button class=\"local-time-btn\">"
-					//+ 		"<span class=\"glyphicon glyphicon-time local-time-icon\"></span>"
-							//+ "</button>"
-					//+    "</div>"
-					//+ 	"</td>"
 					+ "</tr>");
 		}
 
@@ -92,7 +82,10 @@ public class UserServlet extends HttpServlet {
 				+ "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
 
 				+ "<link rel=\"stylesheet\" href=\"resources/css/template.css\">"
-				+ "<link rel=\"stylesheet\" href=\"resources/css/all-flights-style.css\">"
+				+ "<link rel=\"stylesheet\" href=\"resources/css/header.css\">"
+				+ "<link rel=\"stylesheet\" href=\"resources/css/user.css\">"
+				+ "<link rel=\"stylesheet\" href=\"resources/css/table.css\">"
+				+ "<link rel=\"stylesheet\" href=\"resources/css/footer.css\">"
 				+ "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" />"
 				+ "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css\" />"
 
@@ -105,11 +98,41 @@ public class UserServlet extends HttpServlet {
 	}
 
 	private void printSearchForm(PrintWriter out) {
-		out.print("<body>" + "<div class=\"container-fluid\">" + "<div class=\"row content\">"
-				+ "<div class=\"col-sm-12 menu-bar\">"
-				+ "<span class=\"glyphicon glyphicon-home menu-icon icons\" title =\"Home\"></span>" 
-				+ "<span class=\"glyphicon glyphicon-log-out menu-icon icons\" title =\"Log out\"></span>" + "</div>"  
+		out.print("<body>" 
+				
 
+				//<!-- HEADER -->
+				+ "<div class=\"header\">"
+				
+				+     "<span class=\"glyphicon glyphicon-home icon\"></span>" 
+				+     "<span class=\"glyphicon glyphicon-plus icon\"></span>" 
+				+	  "<span class=\"glyphicon glyphicon-search icon\"></span>" 
+				+	  "<span class=\"glyphicon glyphicon-user icon\"></span>" 
+				+     "<span class=\"glyphicon glyphicon-volume-up icon\"></span> "
+				+ 	  "<span class=\"glyphicon glyphicon-pencil icon\"></span>" 
+				+     "<span class=\"glyphicon glyphicon-envelope icon\"></span>" 
+				+	  "<span class=\"glyphicon glyphicon-print icon\"></span>"
+				+     "<span class=\"glyphicon glyphicon-plane icon\"></span>" 
+				+	  "<span class=\"glyphicon glyphicon-lock icon\"></span>" 
+				+ 	  "<span class=\"glyphicon glyphicon-signal icon\"></span>" 
+				+	  "<span class=\"glyphicon glyphicon-star icon\"></span>" 
+				+	  "<span class=\"glyphicon glyphicon-cog icon\"></span>" 
+				//+	  "<span class=\"glyphicon glyphicon-log-out icon\"></span>"
+				+ "<form id=\"logoutForm\" action=\"logout\" method=\"POST\" class=\"logout-form\">"
+				+"<span class=\"glyphicon glyphicon-log-out icon\" onclick=\"document.getElementById('logoutForm').submit()\"></span>"
+			+"</form>"
+				+ "</div>"
+				
+				+ "<div class=\"container-fluid\">" 
+				//+ "<div class=\"row content\">"
+				//+ "<div class=\"col-sm-12 menu-bar\">"
+				//+ "<span class=\"glyphicon glyphicon-home menu-icon icons\" title =\"Home\"></span>" 
+				//+ "<span class=\"glyphicon glyphicon-log-out menu-icon icons\" title =\"Log out\"></span>" + "</div>"  
+
+			
+				
+				
+				
 				+ "<div class=\"col-sm-3 sidenav\">" + "<div class=\"form\">"
 
 				+ "<div class=\"thumbnail\">" + "<img src=\"resources/images/loupe.svg\" />" + "</div>"
@@ -126,7 +149,7 @@ public class UserServlet extends HttpServlet {
 				+ "<input class=\"form-control\" type=\"text\"/>"
 
 				+ "<div class=\"form-group\">"
-				+ "<label class=\"control-label\" for=\"date\"><span class=\"required\">*&nbsp;</span>Arrival Date</label>"
+				+ "<label class=\"control-label\" for=\"date\">Return Date</label>"
 				+ "<input class=\"form-control\" id=\"date\" name=\"date\" placeholder=\"MM/DD/YYYY\" type=\"text\" />"
 				+ "</div>"
 
@@ -136,9 +159,8 @@ public class UserServlet extends HttpServlet {
 	private void printFooter(PrintWriter out) {
 		out.print(
 
-				"<footer class=\"container-fluid footer\">"
+				"<footer class=\"container-fluid\">"
 						+ "<p>Copyright &#169; 2016 | Site built by Beniamin Scridon &#9992; &#9992; &#9992;</p>"
 						+ "</footer>" + "</body>");
 	}
-
 }

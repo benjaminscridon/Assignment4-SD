@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="resources/css/template.css">
-<link rel="stylesheet" href="resources/css/header.css">
+<link rel="stylesheet" href="../resources/css/header.css">
 <link rel="stylesheet" href="resources/css/table.css">
 <link rel="stylesheet" href="resources/css/footer.css">
 <link rel="stylesheet"
@@ -27,20 +27,25 @@
 
 	<!-- HEADER -->
 	<div class="header">
-		<span class="glyphicon glyphicon-home icon"></span> <a
-			class="glyphicon glyphicon-plus icon"></a> <a
-			class="glyphicon glyphicon-search icon"></a> <a
-			class="glyphicon glyphicon-user icon"></a> <a
-			class="glyphicon glyphicon-volume-up icon"></a> <a
-			class="glyphicon glyphicon-pencil icon"></a> <a
-			class="glyphicon glyphicon-envelope icon"></a> <a
-			class="glyphicon glyphicon-print icon"></a> <a
-			class="glyphicon glyphicon-plane icon"></a> <a
-			class="glyphicon glyphicon-lock icon"></a> <a
-			class="glyphicon glyphicon-signal icon"></a> <a
-			class="glyphicon glyphicon-star icon"></a> <a
-			class="glyphicon glyphicon-cog icon"></a> <a
-			class="glyphicon glyphicon-log-out icon"></a>
+
+		
+		<span class="glyphicon glyphicon-home icon"></span> <span
+			class="glyphicon glyphicon-search icon"></span> <span
+			class="glyphicon glyphicon-plus icon"></span> <span
+			class="glyphicon glyphicon-user icon"></span> <span
+			class="glyphicon glyphicon-volume-up icon"></span> <span
+			class="glyphicon glyphicon-pencil icon"></span> <span
+			class="glyphicon glyphicon-envelope icon"></span> <span
+			class="glyphicon glyphicon-print icon"></span> <span
+			class="glyphicon glyphicon-plane icon"></span> <span
+			class="glyphicon glyphicon-lock icon"></span> <span
+			class="glyphicon glyphicon-signal icon"></span> <span
+			class="glyphicon glyphicon-star icon"></span> <span
+			class="glyphicon glyphicon-cog icon"></span>
+
+		<form id="logoutForm" action="../logout" method="POST" class="logout-form">
+			<span class="glyphicon glyphicon-log-out icon" onclick="document.getElementById('logoutForm').submit()"></span>
+		</form>
 	</div>
 
 
@@ -58,7 +63,7 @@
 		</div>
 
 	</c:if>
-	
+
 
 
 	<!-- TABLE WITTH ALL FLIGHTS -->
@@ -72,6 +77,7 @@
 					<th>Departure Date</th>
 					<th>Arrival City</th>
 					<th>Arrival Date</th>
+					<th></th>
 					<th></th>
 				</tr>
 			</thead>
@@ -88,7 +94,7 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#128197;
 							${dateFormat.format(flight.departureDateTime)}</td>
 
-						<td><a class="city-label" href="local-time?city=" >${flight.arrivalCity.name}</a>
+						<td><a class="city-label" href="local-time?city=">${flight.arrivalCity.name}</a>
 						</td>
 						<td>&#128336; ${timeFormat.format(flight.arrivalDateTime)}
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#128197;
@@ -96,12 +102,25 @@
 
 
 						<td>
-							<form id="deleteForm${flight.id}" action="admin" method="POST">
-								<input name="flightId" value="${flight.id}" type="hidden"/>
-								<span class="glyphicon glyphicon-trash city-label"  onclick="document.getElementById('deleteForm${flight.id}').submit()"></span>
+							<form id="editForm${flight.id}" action="update-flight"
+								method="GET">
+								<input name="flightId-update" value="${flight.id}" type="hidden" /> <span
+									class="glyphicon glyphicon-edit city-label"
+									onclick="document.getElementById('editForm${flight.id}').submit()"></span>
 							</form>
 						</td>
-					
+
+
+						<td>
+							<form id="deleteForm${flight.id}" action="home" method="POST">
+								<input name="flightId" value="${flight.id}" type="hidden" /> <span
+									class="glyphicon glyphicon-trash city-label"
+									onclick="document.getElementById('deleteForm${flight.id}').submit()"></span>
+							</form>
+						</td>
+
+
+
 					</tr>
 				</c:forEach>
 			</tbody>
