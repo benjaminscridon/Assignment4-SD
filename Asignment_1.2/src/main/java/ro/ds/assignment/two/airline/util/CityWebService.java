@@ -5,10 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Map;
-
-import javax.json.stream.JsonParserFactory;
-
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.JsonProcessingException;
@@ -29,7 +25,6 @@ public class CityWebService {
 
 		String latitude = ""+rootNode.findValue("lat");
 		String longitude=""+rootNode.findValue("lng");
-		
 		
 		String webServiceUrl2=
 				"http://api.geonames.org/timezoneJSON?lat="+latitude+"&lng="+longitude+"&username=beniamin.scridon";

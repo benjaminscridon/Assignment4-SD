@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="resources/css/template.css">
 <link rel="stylesheet" href="../resources/css/header.css">
 <link rel="stylesheet" href="resources/css/footer.css">
+<link rel="stylesheet" href="../resources/css/table.css">
 <link rel="stylesheet" href="resources/css/add-flight.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -24,14 +25,13 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-
 <body>
-
 	<!-- HEADER -->
 	<div class="header">
-		<span class="glyphicon glyphicon-home icon"></span> <span
-			class="glyphicon glyphicon-search icon"></span> <span
-			class="glyphicon glyphicon-plus icon"></span> <span
+		<a class="glyphicon glyphicon-home icon" href="/airline/admin/home"></a>
+		<span class="glyphicon glyphicon-search icon"></span> <a
+			class="glyphicon glyphicon-plus icon"
+			href="/airline/admin/add-flight"></a> <span
 			class="glyphicon glyphicon-user icon"></span> <span
 			class="glyphicon glyphicon-volume-up icon"></span> <span
 			class="glyphicon glyphicon-pencil icon"></span> <span
@@ -48,8 +48,8 @@
 			<span class="glyphicon glyphicon-log-out icon"
 				onclick="document.getElementById('logoutForm').submit()"></span>
 		</form>
-
 	</div>
+
 
 	<c:if test="${error!=null}">
 		<div class=" alert alert-danger fade in message">
@@ -119,10 +119,7 @@
 			</div>
 
 			<div class="form-group">
-			
-	
-			
-			<input name="flightId-update" value="${flight.id}" type="hidden" /> 
+				<input name="flightId-update" value="${flight.id}" type="hidden" />
 				<button class="btn btn-success" name="submit" type="submit">Update
 					Flight</button>
 			</div>

@@ -3,12 +3,10 @@ package ro.ds.assignment.two.airline.presentation.admin;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import ro.ds.assignment.two.airline.businesslogic.FlightService;
 import ro.ds.assignment.two.airline.domain.Flight;
 import ro.ds.assignment.two.airline.exceptions.ServiceException;
@@ -28,8 +26,8 @@ public class AdminHomeServlet extends HttpServlet {
 			request.setAttribute("error", request.getParameter("error"));
 			request.setAttribute("success", request.getParameter("success"));
 		} catch (ServiceException exc) {
-			// redirect.error message from some reason we can't get data from
-			// database
+			response.sendRedirect(request.getContextPath() + "/not-allowed.html");
+			return;
 		}
 
 		request.getRequestDispatcher("home.jsp").forward(request, response);

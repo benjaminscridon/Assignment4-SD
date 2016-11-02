@@ -21,7 +21,6 @@ public class LocalTimeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String city = request.getParameter("city");
-		System.out.println("City:"+city);
 		
 		if (city.length() != 0) {
 			response.setContentType("text/html");
@@ -34,17 +33,16 @@ public class LocalTimeServlet extends HttpServlet {
 			try {
 				printBody(out,city);
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				response.sendRedirect("general-error.html");
+				return;
 			}
 			printFooter(out);
-		
 			out.print("</html>");
 			out.close();
 
-			
 		} else {
-			response.getWriter().append("Error...").append(request.getContextPath());
+			response.sendRedirect("general-error.html");
+			return;
 		}
 	}
 
@@ -60,7 +58,6 @@ public class LocalTimeServlet extends HttpServlet {
 				+ "<link rel=\"stylesheet\" href=\"resources/css/local-time.css\">"
 				+ "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" />"
 				+ "</head>"
-				
 				);
 	}
 	
@@ -84,7 +81,6 @@ public class LocalTimeServlet extends HttpServlet {
 	
 	private void printFooter(PrintWriter out) {
 		out.print(
-
 				"<footer class=\"container-fluid footer\">"
 						+ "<p>Copyright &#169; 2016 | Site built by Beniamin Scridon &#9992; &#9992; &#9992;</p>"
 						+ "</footer>" + "</body>");

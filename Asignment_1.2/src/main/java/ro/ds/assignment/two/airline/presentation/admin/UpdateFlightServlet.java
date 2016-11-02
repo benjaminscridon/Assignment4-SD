@@ -5,16 +5,12 @@ import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
 import ro.ds.assignment.two.airline.businesslogic.CityService;
 import ro.ds.assignment.two.airline.businesslogic.FlightService;
-import ro.ds.assignment.two.airline.dao.CommonDAO;
 import ro.ds.assignment.two.airline.domain.City;
 import ro.ds.assignment.two.airline.domain.Flight;
 import ro.ds.assignment.two.airline.exceptions.ServiceException;
@@ -39,8 +35,6 @@ public class UpdateFlightServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("do post update flight servlet");
-		
 		
 		String flightID = request.getParameter("flightId-update");
 		String flightNumber = request.getParameter("flightNumber");
@@ -49,7 +43,6 @@ public class UpdateFlightServlet extends HttpServlet {
 		String arrivalCity = request.getParameter("arrivalCity");
 
 		if (departureCity.equals(arrivalCity)) {
-			System.out.println("Am intrat chiar aici");
 			response.sendRedirect(
 					"update-flight?error=" + URLEncoder.encode("Invalid citiy. Please try again.", "UTF-8"));
 			return;
@@ -87,13 +80,7 @@ public class UpdateFlightServlet extends HttpServlet {
 
 		try {
 			flight.setId(Integer.parseInt(flightID));
-			System.out.println("Incerc sa updatez "+flight);
-			
-			new CommonDAO<>().update(flight);
-			System.out.println("Nu am putut");
-		/*	response.sendRedirect(
-					"update-flight?flightId-update="+flight.getId());*/
-			response.sendRedirect("add-flight?success="+ URLEncoder.encode("Flight have been updated successfully!!", "UTF-8")); 
+			getFlightService().updateFlight(flight);
 		} catch (ServiceException exc) {
 			response.sendRedirect(
 					"update-flight?error=" + URLEncoder.encode("Updating flight error... Please try again.", "UTF-8"));

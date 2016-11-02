@@ -19,20 +19,9 @@ public class AuthentificationFilter implements Filter {
 	private String url;
 
 	@Override
-	public void init(FilterConfig filterConfig) throws ServletException {
-
-	}
-
-	@Override
-	public void destroy() {
-
-	}
-
-	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		System.out.println("\n\nAuthentication Filter.");
 		httpRequest = (HttpServletRequest) request;
 		httpResponse = (HttpServletResponse) response;
 		session = httpRequest.getSession();
@@ -43,50 +32,21 @@ public class AuthentificationFilter implements Filter {
 		boolean isLoginServlet = url.indexOf("/login") >= 0;
 		boolean isNotAllowedPage = url.indexOf("/not-allowed.html") >= 0;
 		boolean isResource = url.startsWith("/airline/resources/");
+		boolean isGeneralErrorPage = url.indexOf("/general-error.html") >=0;
 
-		if (isUserLoggedIn || isLoginPage || isNotAllowedPage || isLoginServlet  || isResource ) {
+		if (isUserLoggedIn || isLoginPage || isNotAllowedPage || isLoginServlet || isResource || isGeneralErrorPage) {
 			chain.doFilter(request, response);
 		} else {
 			httpResponse.sendRedirect(httpRequest.getContextPath() + "/login.html");
 			return;
 		}
-		
-		
-		
-		
-	//	System.out.println(isLoggedIn() + "-" + isPage("login.html") +"-"+ isPage("login"));
-		
-		/*if (isLoggedIn() || isPage("login.html") || isPage("logout") || isPage("login") || isPage("airline/resources/")) {
-			System.out.println("Hello chain");
-			chain.doFilter(request, response);
-		} else {
-			System.out.println("Redirect");
-			httpResponse.sendRedirect(httpRequest.getContextPath() + "/login.html");
-			return;
-		}*/
-	/*	System.out.println("Session1:"+session.getAttribute("username"));
-		if(session == null || session.getAttribute("username")==null || url.endsWith("login") || url.endsWith("css")
-			|| url.endsWith("logout")	){
-			System.out.println("Session2:"+session);
-			httpResponse.sendRedirect("login");
-		}else{
-			// pass the request along the filter chain
-			chain.doFilter(request, response);
-		}*/
-
+	}
+	
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
 	}
 
-	private boolean isLoggedIn() {
-		if (null != session && null != session.getAttribute("username")) {
-			return true;
-		}
-		return false;
-	}
-
-	private boolean isPage(String name) {
-		if (url.indexOf("/" + name) >= 0) {
-			return true;
-		}
-		return false;
+	@Override
+	public void destroy() {
 	}
 }

@@ -8,10 +8,11 @@
 <title>Admin Flights</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="resources/css/template.css">
+<link rel="stylesheet" href="../resources/css/template.css">
 <link rel="stylesheet" href="../resources/css/header.css">
-<link rel="stylesheet" href="resources/css/table.css">
-<link rel="stylesheet" href="resources/css/footer.css">
+<link rel="stylesheet" href="../resources/css/table.css">
+<link rel="stylesheet" href="../resources/css/footer.css">
+<link rel="stylesheet" href="../resources/css/add-flight.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 
@@ -28,10 +29,11 @@
 	<!-- HEADER -->
 	<div class="header">
 
-		
-		<span class="glyphicon glyphicon-home icon"></span> <span
-			class="glyphicon glyphicon-search icon"></span> <span
-			class="glyphicon glyphicon-plus icon"></span> <span
+		<a class="glyphicon glyphicon-home icon" href="/airline/admin/home"></a> <span
+			class="glyphicon glyphicon-search icon"></span> 
+			
+			<a
+			class="glyphicon glyphicon-plus icon" href="/airline/admin/add-flight"></a> <span
 			class="glyphicon glyphicon-user icon"></span> <span
 			class="glyphicon glyphicon-volume-up icon"></span> <span
 			class="glyphicon glyphicon-pencil icon"></span> <span
@@ -43,8 +45,10 @@
 			class="glyphicon glyphicon-star icon"></span> <span
 			class="glyphicon glyphicon-cog icon"></span>
 
-		<form id="logoutForm" action="../logout" method="POST" class="logout-form">
-			<span class="glyphicon glyphicon-log-out icon" onclick="document.getElementById('logoutForm').submit()"></span>
+		<form id="logoutForm" action="../logout" method="POST"
+			class="logout-form">
+			<span class="glyphicon glyphicon-log-out icon"
+				onclick="document.getElementById('logoutForm').submit()"></span>
 		</form>
 	</div>
 
@@ -63,10 +67,6 @@
 		</div>
 
 	</c:if>
-
-
-
-	<!-- TABLE WITTH ALL FLIGHTS -->
 
 	<div class="col-sm-12">
 		<table class="table table-hover">
@@ -88,13 +88,13 @@
 					<tr>
 						<td>${flight.flightNumber}</td>
 
-						<td><a class="city-label" href="local-time?city=">${flight.departureCity.name}</a>
+						<td><span class="city-label">${flight.departureCity.name}</span>
 						</td>
 						<td>&#128336; ${timeFormat.format(flight.departureDateTime)}
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#128197;
 							${dateFormat.format(flight.departureDateTime)}</td>
 
-						<td><a class="city-label" href="local-time?city=">${flight.arrivalCity.name}</a>
+						<td><span class="city-label">${flight.arrivalCity.name}</span>
 						</td>
 						<td>&#128336; ${timeFormat.format(flight.arrivalDateTime)}
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#128197;
@@ -104,8 +104,8 @@
 						<td>
 							<form id="editForm${flight.id}" action="update-flight"
 								method="GET">
-								<input name="flightId-update" value="${flight.id}" type="hidden" /> <span
-									class="glyphicon glyphicon-edit city-label"
+								<input name="flightId-update" value="${flight.id}" type="hidden" />
+								<span class="glyphicon glyphicon-edit city-label"
 									onclick="document.getElementById('editForm${flight.id}').submit()"></span>
 							</form>
 						</td>
@@ -119,16 +119,12 @@
 							</form>
 						</td>
 
-
-
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
 
-
-	<!-- FOOTER -->
 	<footer class="container-fluid">
 		<p>Copyright &#169; 2016 | Site built by Beniamin Scridon
 			&#9992;&#9992; &#9992;</p>

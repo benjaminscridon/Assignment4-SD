@@ -11,19 +11,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * 
+ * @author Beniamin Scridon
+ *
+ */
 public class AdminFilter implements Filter {
 
-	public void destroy() {
-	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		System.out.println("Admin Filter.");
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
-		
-		
 		HttpSession session = httpRequest.getSession();
-		
 		
 		boolean isUserAdmin = session != null
                 && (session.getAttribute("admin") == Boolean.TRUE);
@@ -34,24 +33,14 @@ public class AdminFilter implements Filter {
 		else{
 			httpResponse.sendRedirect(httpRequest.getContextPath() + "/not-allowed.html");
 			return;
-			//request.getRequestDispatcher("notAllowed.html").forward(httpRequest, httpResponse);
 		}
 	}
 		
-		/*boolean isUserAdmin = session != null
-                && (session.getAttribute("admin") == Boolean.TRUE);
-		
-		if(isUserAdmin){
-			System.out.println("Intra aici");
-				chain.doFilter(request, response);	
-		}
-		else{
-			httpResponse.sendRedirect(httpRequest.getContextPath() + "/not-allowed.html");
-			return;
-			//request.getRequestDispatcher("notAllowed.html").forward(httpRequest, httpResponse);
-		}*/
-	
+	@Override
 	public void init(FilterConfig fConfig) throws ServletException {
 	}
-
+	
+	@Override
+	public void destroy() {
+	}
 }

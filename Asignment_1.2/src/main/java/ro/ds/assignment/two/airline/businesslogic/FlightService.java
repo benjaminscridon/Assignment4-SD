@@ -37,24 +37,29 @@ public class FlightService {
 		}
 		return flights;
 	}
-	
-	public void deleteFlight(Flight flight){
-		try{
+
+	public void deleteFlight(Flight flight) {
+		try {
 			commonDAO.delete(commonDAO.find(Flight.class, flight.getId()));
-		}catch(RepositoryException exc){
+		} catch (RepositoryException exc) {
 			throw new ServiceException("There is a problem to delete selected flight.");
 		}
 	}
-	
-	public Flight findFlight(int id){
-		try{
-			System.out.println("Id :"+id);
+
+	public Flight findFlight(int id) {
+		try {
 			return (Flight) commonDAO.find(Flight.class, id);
-		}catch(RepositoryException exc){
-			System.out.println("Mareee baii");
+		} catch (RepositoryException exc) {
 			throw new ServiceException("Flight not found..");
 		}
 	}
-	
+
+	public void updateFlight(Flight flight) {
+		try {
+			commonDAO.update(flight);
+		} catch (RepositoryException exc) {
+			throw new ServiceException("Cannot update..");
+		}
+	}
 
 }

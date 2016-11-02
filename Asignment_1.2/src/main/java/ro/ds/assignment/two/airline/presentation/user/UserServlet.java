@@ -15,18 +15,13 @@ import ro.ds.assignment.two.airline.domain.Flight;
 
 /**
  * @author Beniamin Scridon
- * @since Sunday,October 23,2016 Servlet implementation class AllFlightsServlet
+ * @since Sunday,October 23,2016 
  */
 public class UserServlet extends HttpServlet {
-
+	
+	private static final long serialVersionUID = 1L;
 	private FlightService flightService;
 
-	private static final long serialVersionUID = 8735653712513158090L;
-
-	public UserServlet() {
-		super();
-	}
-	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -47,7 +42,6 @@ public class UserServlet extends HttpServlet {
 		out.print("<th>Departure Date</th>");
 		out.print("<th>Arrival City</th>");
 		out.print("<th>Arrival Date</th>");
-		//out.print("<th>Local Time</th>");
 		out.print("</tr>");
 		out.print("</thead>");
 
@@ -99,8 +93,6 @@ public class UserServlet extends HttpServlet {
 
 	private void printSearchForm(PrintWriter out) {
 		out.print("<body>" 
-				
-
 				//<!-- HEADER -->
 				+ "<div class=\"header\">"
 				
@@ -117,24 +109,13 @@ public class UserServlet extends HttpServlet {
 				+ 	  "<span class=\"glyphicon glyphicon-signal icon\"></span>" 
 				+	  "<span class=\"glyphicon glyphicon-star icon\"></span>" 
 				+	  "<span class=\"glyphicon glyphicon-cog icon\"></span>" 
-				//+	  "<span class=\"glyphicon glyphicon-log-out icon\"></span>"
 				+ "<form id=\"logoutForm\" action=\"logout\" method=\"POST\" class=\"logout-form\">"
 				+"<span class=\"glyphicon glyphicon-log-out icon\" onclick=\"document.getElementById('logoutForm').submit()\"></span>"
 			+"</form>"
 				+ "</div>"
 				
 				+ "<div class=\"container-fluid\">" 
-				//+ "<div class=\"row content\">"
-				//+ "<div class=\"col-sm-12 menu-bar\">"
-				//+ "<span class=\"glyphicon glyphicon-home menu-icon icons\" title =\"Home\"></span>" 
-				//+ "<span class=\"glyphicon glyphicon-log-out menu-icon icons\" title =\"Log out\"></span>" + "</div>"  
-
-			
-				
-				
-				
 				+ "<div class=\"col-sm-3 sidenav\">" + "<div class=\"form\">"
-
 				+ "<div class=\"thumbnail\">" + "<img src=\"resources/images/loupe.svg\" />" + "</div>"
 
 				+ "<label class=\"control-label\"><span class=\"required\">*&nbsp;</span>Departure City</label>"
@@ -158,7 +139,6 @@ public class UserServlet extends HttpServlet {
 
 	private void printFooter(PrintWriter out) {
 		out.print(
-
 				"<footer class=\"container-fluid\">"
 						+ "<p>Copyright &#169; 2016 | Site built by Beniamin Scridon &#9992; &#9992; &#9992;</p>"
 						+ "</footer>" + "</body>");

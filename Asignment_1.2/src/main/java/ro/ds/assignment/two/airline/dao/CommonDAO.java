@@ -5,7 +5,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import ro.ds.assignment.two.airline.exceptions.RepositoryException;
 import ro.ds.assignment.two.airline.util.HibernateUtil;
 
@@ -26,7 +25,7 @@ public class CommonDAO<T> {
 			if (null != transaction) {
 				transaction.rollback();
 			}
-			// /throw new RepositoryException(e);
+			throw new RepositoryException(e);
 		} finally {
 			session.close();
 		}
@@ -42,20 +41,21 @@ public class CommonDAO<T> {
 			if (null != transaction) {
 				transaction.rollback();
 			}
-			// throw new RepositoryException(exc);
+			throw new RepositoryException(exc);
 		} finally {
 			session.close();
 		}
 	}
 
-	 public Object find(Class clazz, int id) {
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public Object find(Class clazz, int id) {
 	        Object obj = null;
 	        try {
 	            startOperation();
-	            obj = session.load(clazz, id);
+			obj = session.load(clazz, id);
 	            transaction.commit();
 	        } catch (HibernateException e) {
-	        	
+	        	throw new RepositoryException("Not found!");
 	        } finally {
 	        	session.close();
 	        }
@@ -77,8 +77,6 @@ public class CommonDAO<T> {
 			}
 		}
 
-	
-	
 	public void delete(Object obj) {
 		try {
 			startOperation();
@@ -88,7 +86,7 @@ public class CommonDAO<T> {
 			if (null != transaction) {
 				transaction.rollback();
 			}
-			// throw new RepositoryException(e);
+			throw new RepositoryException(e);
 		} finally {
 			session.close();
 		}

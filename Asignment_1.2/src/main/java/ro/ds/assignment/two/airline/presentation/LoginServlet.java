@@ -6,10 +6,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.rpc.ServiceException;
 
 import ro.ds.assignment.two.airline.businesslogic.AccountService;
 import ro.ds.assignment.two.airline.domain.Account;
 
+/**
+ * 
+ * @author Beniamin Scridon
+ *
+ */
 public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -18,16 +24,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		System.out.println("LoginServlet> -Session" + session);
-		/*
-		 * if(session!=null ){ System.out.println("nothing to tdo ");
-		 * response.sendRedirect("login.html");
-		 * 
-		 * }else{ response.sendRedirect("login.html"); }
-		 */
 		response.sendRedirect("login.html");
-
 	}
 
 	@Override
@@ -36,10 +33,14 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
-		String role = getAccountService().isValidAccount(new Account(username, password));
-		System.out.println("LoginServlet> role:" + role);
+		String role = null;
+		try {
+			role = getAccountService().isValidAccount(new Account(username, password));
+		} catch (ServiceException e) {
+			response.sendRedirect("general-error.html");
+		}
+		
 		if (null != role) {
-
 			HttpSession session = request.getSession(true);
 			session.setAttribute("username", username);
 
@@ -47,12 +48,11 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect("admin/home");
 				session.setAttribute("admin", Boolean.TRUE);
 
-			}
-			else{
+			} else {
 				response.sendRedirect("user");
 			}
 		} else {
-			response.sendRedirect("login.html");
+			response.sendRedirect("general-error.html");
 		}
 	}
 
