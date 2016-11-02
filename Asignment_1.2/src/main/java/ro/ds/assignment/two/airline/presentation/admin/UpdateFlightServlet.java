@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import ro.ds.assignment.two.airline.businesslogic.CityService;
 import ro.ds.assignment.two.airline.businesslogic.FlightService;
+import ro.ds.assignment.two.airline.dao.CommonDAO;
 import ro.ds.assignment.two.airline.domain.City;
 import ro.ds.assignment.two.airline.domain.Flight;
 import ro.ds.assignment.two.airline.exceptions.ServiceException;
@@ -24,11 +26,9 @@ public class UpdateFlightServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("DOGET- UPDATEFLIGHT SERVELET");
 		String flightId = request.getParameter("flightId-update");
-		System.out.println("Flight id pasres :"+flightId);
 		Flight flight = new FlightService().findFlight(Integer.parseInt(flightId));
-		System.out.println("++++"+flight);
+		
 		request.setAttribute("flight", flight);
 		request.setAttribute("cities", getCityService().getAllCities());
 		request.setAttribute("error", request.getParameter("error"));
@@ -37,15 +37,19 @@ public class UpdateFlightServlet extends HttpServlet {
 		request.getRequestDispatcher("update-flight.jsp").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("do post update flight servlet");
+		
+		
+		String flightID = request.getParameter("flightId-update");
 		String flightNumber = request.getParameter("flightNumber");
 		String airplaneType = request.getParameter("airplaneType");
 		String departureCity = request.getParameter("departureCity");
 		String arrivalCity = request.getParameter("arrivalCity");
 
 		if (departureCity.equals(arrivalCity)) {
+			System.out.println("Am intrat chiar aici");
 			response.sendRedirect(
 					"update-flight?error=" + URLEncoder.encode("Invalid citiy. Please try again.", "UTF-8"));
 			return;
@@ -71,7 +75,7 @@ public class UpdateFlightServlet extends HttpServlet {
 		City arrivalCityy = null;
 		try {
 			departureCityy = getCityService().findCityByName(departureCity);
-			arrivalCityy = getCityService().findCityByName(departureCity);
+			arrivalCityy = getCityService().findCityByName(arrivalCity);
 		} catch (ServiceException exc) {
 			response.sendRedirect(
 					"update-flight?error=" + URLEncoder.encode("City cannot be found. Please try again.", "UTF-8"));
@@ -82,9 +86,14 @@ public class UpdateFlightServlet extends HttpServlet {
 				arrivalDateTime);
 
 		try {
-			getFlightService().addFlight(flight);
-			response.sendRedirect(
-					"update-flight?success=" + URLEncoder.encode("Flight have been updated successfully!!", "UTF-8"));
+			flight.setId(Integer.parseInt(flightID));
+			System.out.println("Incerc sa updatez "+flight);
+			
+			new CommonDAO<>().update(flight);
+			System.out.println("Nu am putut");
+		/*	response.sendRedirect(
+					"update-flight?flightId-update="+flight.getId());*/
+			response.sendRedirect("add-flight?success="+ URLEncoder.encode("Flight have been updated successfully!!", "UTF-8")); 
 		} catch (ServiceException exc) {
 			response.sendRedirect(
 					"update-flight?error=" + URLEncoder.encode("Updating flight error... Please try again.", "UTF-8"));

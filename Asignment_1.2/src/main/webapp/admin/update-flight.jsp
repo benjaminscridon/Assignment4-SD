@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="resources/css/template.css">
-<link rel="stylesheet" href="resources/css/header.css">
+<link rel="stylesheet" href="../resources/css/header.css">
 <link rel="stylesheet" href="resources/css/footer.css">
 <link rel="stylesheet" href="resources/css/add-flight.css">
 <link rel="stylesheet"
@@ -42,10 +42,11 @@
 			class="glyphicon glyphicon-signal icon"></span> <span
 			class="glyphicon glyphicon-star icon"></span> <span
 			class="glyphicon glyphicon-cog icon"></span>
-		<form id="logoutForm" action="logout" method="POST">
+
+		<form id="logoutForm" action="../logout" method="POST"
+			class="logout-form">
 			<span class="glyphicon glyphicon-log-out icon"
-				onclick="document.getElementById('logoutForm').submit()">
-			</span>
+				onclick="document.getElementById('logoutForm').submit()"></span>
 		</form>
 
 	</div>
@@ -77,7 +78,8 @@
 			<div class="form-group">
 				<label class="control-label">Flight Number</label> <input
 					type="text" class="form-control" name="flightNumber"
-					id="flightNumber" required="required" value="${flight.flightNumber}">
+					id="flightNumber" required="required"
+					value="${flight.flightNumber}">
 			</div>
 
 			<div class="form-group">
@@ -117,7 +119,11 @@
 			</div>
 
 			<div class="form-group">
-				<button class="btn btn-success " name="submit" type="submit">Update
+			
+	
+			
+			<input name="flightId-update" value="${flight.id}" type="hidden" /> 
+				<button class="btn btn-success" name="submit" type="submit">Update
 					Flight</button>
 			</div>
 		</form>

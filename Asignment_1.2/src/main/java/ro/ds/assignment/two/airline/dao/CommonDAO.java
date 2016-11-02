@@ -62,6 +62,21 @@ public class CommonDAO<T> {
 	        return obj;
 	    }
 
+	 public void update(Object object) throws RepositoryException {
+			try {
+				startOperation();
+				session.update(object);
+				transaction.commit();
+			} catch (RuntimeException e) {
+				if (transaction != null) {
+					transaction.rollback();
+				}
+				throw new RepositoryException("Could not update!");
+			} finally {
+				session.close();
+			}
+		}
+
 	
 	
 	public void delete(Object obj) {

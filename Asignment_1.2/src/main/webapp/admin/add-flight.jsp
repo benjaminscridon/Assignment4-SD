@@ -117,7 +117,7 @@
 			</div>
 
 			<div class="form-group">
-				<button class="btn btn-success " name="submit" type="submit">Add
+				<button class="btn btn-success"  name="submit" type="submit">Add
 					Flight</button>
 			</div>
 		</form>
