@@ -1,37 +1,62 @@
 package ro.ds.assignment.two.airline.presentation;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import ro.ds.assignment.two.airline.businesslogic.AccountService;
+import ro.ds.assignment.two.airline.domain.Account;
 
 public class LoginServlet extends HttpServlet {
 
-	private static final long serialVersionUID = -8563395287326271570L;
+	private static final long serialVersionUID = 1L;
+	private AccountService accountService;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		// super.doGet(req, resp); response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<html><head><title>Flights</title></head>");
-		out.println("<body>");
-		out.println("<h1>Login Page Servlet Implementation</h1>");
-		for (int i = 1; i <= 6; i++) {
-			out.print("<h" + i + ">");
-			out.print("Hello world.");
-			out.println("</h" + i + ">");
+		HttpSession session = request.getSession();
+		System.out.println("Session" + session);
+		if(session!=null ){
+			System.out.println("nothing to tdo ");
+		
+		
+		}else{
+			 response.sendRedirect("login.html");
 		}
-
-		out.println("</body></html>");
-		out.close();
-
-		//response.sendRedirect("login.html");
-
+		
 	}
 
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String username = request.getParameter("username");
+		String password = request.getParameter("password"); 
+		System.out.println("DO POST  "+username + "  "+password);
+		System.out.println(getAccountService().isValidAccount(new Account(username,password)));
+		
+		//daca nu il gasesc afisez un mesaj cu date invalide
+		
+		HttpSession session = request.getSession(true);
+		session.setAttribute("username", username);
+		
+		if(getAccountService().isValidAccount(new Account(username,password)).toLowerCase().equals("admin")){
+			response.sendRedirect("admin/home");
+			session.setAttribute("admin", Boolean.TRUE);
+		}
+		else{
+			//session.setAttribute("role", "user");
+			response.sendRedirect("user"); 
+		}
+			
+	}
+	
+	private AccountService getAccountService() {
+		if (null == accountService) {
+			accountService = new AccountService();
+		}
+		return accountService;
+	}
 }

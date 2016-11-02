@@ -17,13 +17,13 @@ import ro.ds.assignment.two.airline.domain.Flight;
  * @author Beniamin Scridon
  * @since Sunday,October 23,2016 Servlet implementation class AllFlightsServlet
  */
-public class AllFlightsServlet extends HttpServlet {
+public class UserServlet extends HttpServlet {
 
 	private FlightService flightService;
 
 	private static final long serialVersionUID = 8735653712513158090L;
 
-	public AllFlightsServlet() {
+	public UserServlet() {
 		super();
 	}
 	

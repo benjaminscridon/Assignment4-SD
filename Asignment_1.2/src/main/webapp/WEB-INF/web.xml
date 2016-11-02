@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <display-name>airline</display-name>
+  <welcome-file-list>
+    <welcome-file>login.html</welcome-file>
+  </welcome-file-list>
   <servlet>
     <description></description>
     <display-name>LoginServlet</display-name>
@@ -15,21 +18,11 @@
     <description></description>
     <display-name>UserServlet</display-name>
     <servlet-name>UserServlet</servlet-name>
-    <servlet-class>ro.ds.assignment.two.airline.presentation.UserServlet</servlet-class>
+    <servlet-class>ro.ds.assignment.two.airline.presentation.user.UserServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/user</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>AllFlightsServlet</display-name>
-    <servlet-name>AllFlightsServlet</servlet-name>
-    <servlet-class>ro.ds.assignment.two.airline.presentation.user.AllFlightsServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AllFlightsServlet</servlet-name>
-    <url-pattern>/all-flights</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -69,6 +62,34 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminHomeServlet</servlet-name>
-    <url-pattern>/admin</url-pattern>
+    <url-pattern>/admin/home</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogoutServlet</display-name>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>ro.ds.assignment.two.airline.presentation.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <display-name>AuthentificationFilter</display-name>
+    <filter-name>AuthentificationFilter</filter-name>
+    <filter-class>ro.ds.assignmenet.two.airline.filters.AuthentificationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthentificationFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <display-name>AdminFilter</display-name>
+    <filter-name>AdminFilter</filter-name>
+    <filter-class>ro.ds.assignmenet.two.airline.filters.AdminFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AdminFilter</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
 </web-app>
