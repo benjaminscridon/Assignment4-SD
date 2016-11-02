@@ -44,7 +44,7 @@ public class UpdateFlightServlet extends HttpServlet {
 
 		if (departureCity.equals(arrivalCity)) {
 			response.sendRedirect(
-					"update-flight?error=" + URLEncoder.encode("Invalid citiy. Please try again.", "UTF-8"));
+					"home?error=" + URLEncoder.encode("Invalid citiy. Please try again.", "UTF-8"));
 			return;
 		}
 
@@ -55,12 +55,12 @@ public class UpdateFlightServlet extends HttpServlet {
 			arrivalDateTime = format.parse(request.getParameter("arrivalDateTime"));
 		} catch (ParseException e) {
 			response.sendRedirect(
-					"update-flight?error=" + URLEncoder.encode("Invalid date. Please try again.", "UTF-8"));
+					"home?error=" + URLEncoder.encode("Invalid date. Please try again.", "UTF-8"));
 		}
 
 		if (departureDateTime.equals(arrivalDateTime) || departureDateTime.after(arrivalDateTime)) {
 			response.sendRedirect(
-					"update-flight?error=" + URLEncoder.encode("Invalid arrival date. Please try again.", "UTF-8"));
+					"home?error=" + URLEncoder.encode("Invalid arrival date. Please try again.", "UTF-8"));
 			return;
 		}
 
@@ -71,7 +71,7 @@ public class UpdateFlightServlet extends HttpServlet {
 			arrivalCityy = getCityService().findCityByName(arrivalCity);
 		} catch (ServiceException exc) {
 			response.sendRedirect(
-					"update-flight?error=" + URLEncoder.encode("City cannot be found. Please try again.", "UTF-8"));
+					"home?error=" + URLEncoder.encode("City cannot be found. Please try again.", "UTF-8"));
 			return;
 		}
 
@@ -83,8 +83,10 @@ public class UpdateFlightServlet extends HttpServlet {
 			getFlightService().updateFlight(flight);
 		} catch (ServiceException exc) {
 			response.sendRedirect(
-					"update-flight?error=" + URLEncoder.encode("Updating flight error... Please try again.", "UTF-8"));
+					"home?error=" + URLEncoder.encode("Updating flight error... Please try again.", "UTF-8"));
+			return;
 		}
+		response.sendRedirect("home?success=" + URLEncoder.encode("Successfully updated.", "UTF-8"));
 	}
 
 	private FlightService getFlightService() {
