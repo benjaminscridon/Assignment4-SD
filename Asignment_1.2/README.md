@@ -1,4 +1,3 @@
-Assignment 1.2 
 This is sample java web application that exercises the Request-Reply Communication Paradigm.
 In order to build and deploy the application on your local machine you need to have the following:
 - Apache Tomcat 8.0.
