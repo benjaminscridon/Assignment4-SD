@@ -64,7 +64,7 @@ public class AddFlightServlet extends HttpServlet {
 		City arrivalCityy = null;
 		try {
 			departureCityy = getCityService().findCityByName(departureCity);
-			arrivalCityy = getCityService().findCityByName(departureCity);
+			arrivalCityy = getCityService().findCityByName(arrivalCity);
 		} catch (ServiceException exc) {
 			response.sendRedirect("add-flight?error="+ URLEncoder.encode("City cannot be found. Please try again.", "UTF-8"));
 			return;
