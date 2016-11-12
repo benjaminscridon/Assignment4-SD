@@ -15,13 +15,20 @@ public class Car implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int year;
 	private int engineCapacity;
-
+	private double price;
+	
 	public Car() {
 	}
 
 	public Car(int year, int engineCapacity) {
 		this.year = year;
 		this.engineCapacity = engineCapacity;
+	}
+	
+	public Car(int year, int engineCapacity, double price) {
+		this.year = year;
+		this.engineCapacity = engineCapacity;
+		this.price = price;
 	}
 
 	public int getYear() {
@@ -40,11 +47,24 @@ public class Car implements Serializable {
 		this.engineCapacity = engineCapacity;
 	}
 
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + engineCapacity;
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + year;
 		return result;
 	}
@@ -60,6 +80,8 @@ public class Car implements Serializable {
 		Car other = (Car) obj;
 		if (engineCapacity != other.engineCapacity)
 			return false;
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
+			return false;
 		if (year != other.year)
 			return false;
 		return true;
@@ -67,7 +89,6 @@ public class Car implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Car [year=" + year + ", engineCapacity=" + engineCapacity + "]";
+		return "Car [year=" + year + ", engineCapacity=" + engineCapacity + ", price=" + price + "]";
 	}
-
 }

@@ -2,14 +2,14 @@ package ro.tuc.dsrl.ds.handson.assig.two.server.communication;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
 import ro.tuc.dsrl.ds.handson.assig.two.rpc.Registry;
+import ro.tuc.dsrl.ds.handson.assig.two.server.services.SellPriceService;
 import ro.tuc.dsrl.ds.handson.assig.two.server.services.TaxService;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @Author: Technical University of Cluj-Napoca, Romania
@@ -31,6 +31,7 @@ public class Server implements Runnable {
 	public Server(int port) throws IOException {
 		serverSocket = new ServerSocket(port);
 		Registry.getInstance().registerEndpoint("ITaxService", new TaxService());
+		Registry.getInstance().registerEndpoint("ISellPriceService", new SellPriceService());
 		new Thread(this).start();
 	}
 
