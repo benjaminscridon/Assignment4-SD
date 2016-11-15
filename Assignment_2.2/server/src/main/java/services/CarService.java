@@ -33,10 +33,12 @@ public class CarService extends UnicastRemoteObject implements ICarService {
 			sum = 144;
 		if (c.getEngineSize() > 3001)
 			sum = 290;
-		return c.getEngineSize() / 200.0 * sum;
+		
+		DecimalFormat df = new DecimalFormat("#.##");
+		return Double.valueOf(df.format(c.getEngineSize() / 200.0 * sum));
 	}
 
-	public double comuteSellingPrice(Car car) throws RemoteException {
+	public double comuteSellingPrice(Car car) throws IllegalArgumentException {
 		if (car.getPrice() <= 0) {
 			throw new IllegalArgumentException("The price of the car must be positive.");
 		} else if (car.getYear() <= 1800) {

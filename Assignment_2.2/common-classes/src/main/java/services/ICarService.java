@@ -10,8 +10,7 @@ import entities.Car;
  *
  */
 public interface ICarService extends Remote {
-
-	double computeTax(Car c) throws RemoteException;
-	double comuteSellingPrice(Car c) throws RemoteException ;
 	
+	double computeTax(Car car) throws RemoteException;
+	double comuteSellingPrice(Car car) throws RemoteException ;
 }
