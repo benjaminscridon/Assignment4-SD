@@ -24,11 +24,8 @@ public class RabbitmqCommunication {
 		ConnectionFactory factory = new ConnectionFactory();
 		factory.setHost(readPropertyFile.getProperty("host"));
 
-		Connection connection = null;
-		Channel channel = null;
-
-		connection = factory.newConnection();
-		channel = connection.createChannel();
+		Connection connection = factory.newConnection();
+		Channel channel = connection.createChannel();
 
 		channel.basicPublish(readPropertyFile.getProperty("rabbitmq-exchange"), "", null, message.getBytes());
 		System.out.println("-> Message Sent.");
