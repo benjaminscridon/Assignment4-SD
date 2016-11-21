@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Administrator</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	
+	<div class="box">
+		<div id="header">
+			<h1>Administrator - Add New DVD</h1>
+		</div>
+
+		<form action="dvd" method="post">
+			<div class="group">
+				<input class="inputMaterial" type="text" name="title" id="title"
+					required="required"> <span class="highlight"></span> <span
+					class="bar"></span> <label>Title</label>
+			</div>
+
+			<div class="group">
+				<input class="inputMaterial" type="text" name="year" id="year"
+					required="required"> <span class="highlight"></span> <span
+					class="bar"></span> <label>Release Year</label>
+			</div>
+
+			<div class="group">
+				<input class="inputMaterial" type="text" name="price" id="price"
+					required="required"> <span class="highlight"></span> <span
+					class="bar"></span> <label>Price ($)</label>
+			</div>
+
+			<button id="add-dvd" type="submit">Add DVD</button>
+		</form>
+
+	</div>
+
+</body>
+</html>
