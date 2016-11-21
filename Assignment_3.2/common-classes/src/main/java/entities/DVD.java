@@ -1,4 +1,5 @@
 package entities;
+
 import java.io.Serializable;
 
 /**
@@ -6,13 +7,13 @@ import java.io.Serializable;
  * @author Beniamin Scridon
  * @since 11/21/2016
  */
-public class DVD implements Serializable{
+public class DVD implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String title;
 	private int year;
 	private double price;
-	
+
 	public DVD() {
 	}
 
@@ -48,6 +49,6 @@ public class DVD implements Serializable{
 
 	@Override
 	public String toString() {
-		return "DVD [title=" + title + ", year=" + year + ", price=" + price + "]";
+		return "DVD Title: " + title + "\nYear:" + year + "\nPrice:" + price + "$";
 	}
 }
