@@ -24,8 +24,6 @@ public class ClientStart {
 		QueueServerConnection queue = new QueueServerConnection("localhost", 8888);
 
 		TextFileService fileService = new TextFileService();
-		// MailService mailService = new
-		// MailService("benjamin.scridon@gmail.com","IonucaScr'?123");
 		DVD dvd;
 
 		while (true) {
