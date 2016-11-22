@@ -1,0 +1,3 @@
+Title:Album nr 1 
+Year:2017
+Price:33.7
