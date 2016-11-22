@@ -1,0 +1,15 @@
+Build:
+ 
+ Administrator-Consumer
+    - deploy on Tomcat 8.0 server
+ 
+ Emails-Consumer and TextFiles-Consumer
+     - build as java application
+     - IDE(ex: Eclipse, Intellij etc.)
+     - JDK 1.8
+     - runtime environment: JRE 1.8
+    
+Run Steps:
+ - run Tomcat 8.0 server which contains administrator-consumer.war file
+ - run the client emails-consumer
+ - run the client textfiles-consumer
