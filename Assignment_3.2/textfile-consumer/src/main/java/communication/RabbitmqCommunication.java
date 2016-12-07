@@ -29,7 +29,7 @@ public class RabbitmqCommunication {
 	}
 
 	public void consumeMessages() throws IOException {
-		System.out.println("-> Waiting for messages.");
+		System.out.println("-> Text-Files consumer is waiting for messages.");
 		channel.basicConsume(readPropertyFile.getProperty("queue"), true, getConsumer());
 	}
 
