@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="assignment4Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="package">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="40" />
+          <Property Name="destinationCity" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="senderCity" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="tracking" Type="bit" />
+          <Property Name="receiver_id" Type="bigint" />
+          <Property Name="sender_id" Type="bigint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.assignment4.package_route_item' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="package_route_item">
+          <Key>
+            <PropertyRef Name="Package_id" />
+            <PropertyRef Name="route_id" />
+          </Key>
+          <Property Name="Package_id" Type="bigint" Nullable="false" />
+          <Property Name="route_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="route_item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="date" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="lastName" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="userType" Type="int" />
+        </EntityType>
+        <Association Name="FK8awk4mo9i0gw0lj0j6hr2rdm1">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="package" Type="Self.package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="package">
+              <PropertyRef Name="sender_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKkqw6tyna6lg7bdgcefro2m4l8">
+          <End Role="route_item" Type="Self.route_item" Multiplicity="1" />
+          <End Role="package_route_item" Type="Self.package_route_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="route_item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="package_route_item">
+              <PropertyRef Name="route_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKlog8q72um5cjcb42tksv9cc0k">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="package" Type="Self.package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="package">
+              <PropertyRef Name="receiver_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKso4pl6mmrtsaqnxfe23eyyxqg">
+          <End Role="package" Type="Self.package" Multiplicity="1" />
+          <End Role="package_route_item" Type="Self.package_route_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="package">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="package_route_item">
+              <PropertyRef Name="Package_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="assignment4ModelStoreContainer">
+          <EntitySet Name="package" EntityType="Self.package" Schema="assignment4" store:Type="Tables" />
+          <EntitySet Name="route_item" EntityType="Self.route_item" Schema="assignment4" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="assignment4" store:Type="Tables" />
+          <EntitySet Name="package_route_item" EntityType="Self.package_route_item" store:Type="Tables" store:Schema="assignment4">
+            <DefiningQuery>SELECT
+`package_route_item`.`Package_id`, 
+`package_route_item`.`route_id`
+FROM `package_route_item` AS `package_route_item`</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK8awk4mo9i0gw0lj0j6hr2rdm1" Association="Self.FK8awk4mo9i0gw0lj0j6hr2rdm1">
+            <End Role="user" EntitySet="user" />
+            <End Role="package" EntitySet="package" />
+          </AssociationSet>
+          <AssociationSet Name="FKkqw6tyna6lg7bdgcefro2m4l8" Association="Self.FKkqw6tyna6lg7bdgcefro2m4l8">
+            <End Role="route_item" EntitySet="route_item" />
+            <End Role="package_route_item" EntitySet="package_route_item" />
+          </AssociationSet>
+          <AssociationSet Name="FKlog8q72um5cjcb42tksv9cc0k" Association="Self.FKlog8q72um5cjcb42tksv9cc0k">
+            <End Role="user" EntitySet="user" />
+            <End Role="package" EntitySet="package" />
+          </AssociationSet>
+          <AssociationSet Name="FKso4pl6mmrtsaqnxfe23eyyxqg" Association="Self.FKso4pl6mmrtsaqnxfe23eyyxqg">
+            <End Role="package" EntitySet="package" />
+            <End Role="package_route_item" EntitySet="package_route_item" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="assignment4Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="package">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="destinationCity" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="senderCity" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tracking" Type="Boolean" />
+          <Property Name="receiver_id" Type="Int64" />
+          <Property Name="sender_id" Type="Int64" />
+          <NavigationProperty Name="user" Relationship="Self.FK8awk4mo9i0gw0lj0j6hr2rdm1" FromRole="package" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="Self.FKlog8q72um5cjcb42tksv9cc0k" FromRole="package" ToRole="user" />
+          <NavigationProperty Name="route_item" Relationship="Self.package_route_item" FromRole="package" ToRole="route_item" />
+        </EntityType>
+        <EntityType Name="route_item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="city" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="packages" Relationship="Self.package_route_item" FromRole="route_item" ToRole="package" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="userType" Type="Int32" />
+          <NavigationProperty Name="packages" Relationship="Self.FK8awk4mo9i0gw0lj0j6hr2rdm1" FromRole="user" ToRole="package" />
+          <NavigationProperty Name="packages1" Relationship="Self.FKlog8q72um5cjcb42tksv9cc0k" FromRole="user" ToRole="package" />
+        </EntityType>
+        <Association Name="FK8awk4mo9i0gw0lj0j6hr2rdm1">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="package" Type="Self.package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="package">
+              <PropertyRef Name="sender_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKlog8q72um5cjcb42tksv9cc0k">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="package" Type="Self.package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="package">
+              <PropertyRef Name="receiver_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="package_route_item">
+          <End Role="route_item" Type="Self.route_item" Multiplicity="*" />
+          <End Role="package" Type="Self.package" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="assignment4Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="packages" EntityType="Self.package" />
+          <EntitySet Name="route_item" EntityType="Self.route_item" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="FK8awk4mo9i0gw0lj0j6hr2rdm1" Association="Self.FK8awk4mo9i0gw0lj0j6hr2rdm1">
+            <End Role="user" EntitySet="users" />
+            <End Role="package" EntitySet="packages" />
+          </AssociationSet>
+          <AssociationSet Name="FKlog8q72um5cjcb42tksv9cc0k" Association="Self.FKlog8q72um5cjcb42tksv9cc0k">
+            <End Role="user" EntitySet="users" />
+            <End Role="package" EntitySet="packages" />
+          </AssociationSet>
+          <AssociationSet Name="package_route_item" Association="Self.package_route_item">
+            <End Role="route_item" EntitySet="route_item" />
+            <End Role="package" EntitySet="packages" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="assignment4ModelStoreContainer" CdmEntityContainer="assignment4Entities">
+          <EntitySetMapping Name="packages">
+            <EntityTypeMapping TypeName="assignment4Model.package">
+              <MappingFragment StoreEntitySet="package">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="destinationCity" ColumnName="destinationCity" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="senderCity" ColumnName="senderCity" />
+                <ScalarProperty Name="tracking" ColumnName="tracking" />
+                <ScalarProperty Name="receiver_id" ColumnName="receiver_id" />
+                <ScalarProperty Name="sender_id" ColumnName="sender_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="route_item">
+            <EntityTypeMapping TypeName="assignment4Model.route_item">
+              <MappingFragment StoreEntitySet="route_item">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="assignment4Model.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="userType" ColumnName="userType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="package_route_item" TypeName="assignment4Model.package_route_item" StoreEntitySet="package_route_item">
+            <EndProperty Name="route_item">
+              <ScalarProperty Name="id" ColumnName="route_id" />
+            </EndProperty>
+            <EndProperty Name="package">
+              <ScalarProperty Name="id" ColumnName="Package_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

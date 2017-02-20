@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://DefaultNamespace" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://DefaultNamespace" xmlns:intf="http://DefaultNamespace" xmlns:tns1="http://dto.assignment4.sd.utcluj.ro" xmlns:tns2="http://entities.assignment4.sd.utcluj.ro" xmlns:tns3="http://exceptions.assignment4.sd.utcluj.ro" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://DefaultNamespace" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.assignment4.sd.utcluj.ro"/>
+   <import namespace="http://exceptions.assignment4.sd.utcluj.ro"/>
+   <import namespace="http://entities.assignment4.sd.utcluj.ro"/>
+   <element name="addPackage">
+    <complexType>
+     <sequence>
+      <element name="p" type="tns1:PackageDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns2_RouteItem">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:RouteItem"/>
+    </sequence>
+   </complexType>
+   <element name="addPackageResponse">
+    <complexType/>
+   </element>
+   <element name="fault" type="xsd:anyType"/>
+   <element name="setPackageTrackable">
+    <complexType>
+     <sequence>
+      <element name="trackable" type="xsd:boolean"/>
+      <element name="packageId" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setPackageTrackableResponse">
+    <complexType/>
+   </element>
+   <element name="addRouteItemToPackage">
+    <complexType>
+     <sequence>
+      <element name="routeItem" type="tns2:RouteItem"/>
+      <element name="packageId" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addRouteItemToPackageResponse">
+    <complexType/>
+   </element>
+   <element name="getPackagesByNameOrId">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+      <element name="id" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPackagesByNameOrIdResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getPackagesByNameOrIdReturn" type="tns1:PackageDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deletePackage">
+    <complexType>
+     <sequence>
+      <element name="p" type="tns1:PackageDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deletePackageResponse">
+    <complexType/>
+   </element>
+   <element name="getAllPackages">
+    <complexType/>
+   </element>
+   <element name="getAllPackagesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAllPackagesReturn" type="tns1:PackageDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://dto.assignment4.sd.utcluj.ro" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://exceptions.assignment4.sd.utcluj.ro"/>
+   <import namespace="http://DefaultNamespace"/>
+   <import namespace="http://entities.assignment4.sd.utcluj.ro"/>
+   <complexType name="UserDTO">
+    <sequence>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="firstName" nillable="true" type="xsd:string"/>
+     <element name="lastName" nillable="true" type="xsd:string"/>
+     <element name="password" nillable="true" type="xsd:string"/>
+     <element name="userType" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="PackageDTO">
+    <sequence>
+     <element name="description" nillable="true" type="xsd:string"/>
+     <element name="destinationCity" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="receiver" nillable="true" type="tns1:UserDTO"/>
+     <element name="route" nillable="true" type="impl:ArrayOf_tns2_RouteItem"/>
+     <element name="sender" nillable="true" type="tns1:UserDTO"/>
+     <element name="senderCity" nillable="true" type="xsd:string"/>
+     <element name="tacking" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://entities.assignment4.sd.utcluj.ro" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.assignment4.sd.utcluj.ro"/>
+   <import namespace="http://exceptions.assignment4.sd.utcluj.ro"/>
+   <import namespace="http://DefaultNamespace"/>
+   <complexType name="BaseEntity">
+    <sequence>
+     <element name="id" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="RouteItem">
+    <complexContent>
+     <extension base="tns2:BaseEntity">
+      <sequence>
+       <element name="city" nillable="true" type="xsd:string"/>
+       <element name="date" nillable="true" type="xsd:dateTime"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="addRouteItemToPackageRequest">
+
+      <wsdl:part element="impl:addRouteItemToPackage" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPackagesByNameOrIdResponse">
+
+      <wsdl:part element="impl:getPackagesByNameOrIdResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="setPackageTrackableRequest">
+
+      <wsdl:part element="impl:setPackageTrackable" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deletePackageResponse">
+
+      <wsdl:part element="impl:deletePackageResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPackagesByNameOrIdRequest">
+
+      <wsdl:part element="impl:getPackagesByNameOrId" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addPackageResponse">
+
+      <wsdl:part element="impl:addPackageResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="setPackageTrackableResponse">
+
+      <wsdl:part element="impl:setPackageTrackableResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addPackageRequest">
+
+      <wsdl:part element="impl:addPackage" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllPackagesRequest">
+
+      <wsdl:part element="impl:getAllPackages" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllPackagesResponse">
+
+      <wsdl:part element="impl:getAllPackagesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deletePackageRequest">
+
+      <wsdl:part element="impl:deletePackage" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ServiceException">
+
+      <wsdl:part element="impl:fault" name="fault">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addRouteItemToPackageResponse">
+
+      <wsdl:part element="impl:addRouteItemToPackageResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Servicee">
+
+      <wsdl:operation name="addPackage">
+
+         <wsdl:input message="impl:addPackageRequest" name="addPackageRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addPackageResponse" name="addPackageResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setPackageTrackable">
+
+         <wsdl:input message="impl:setPackageTrackableRequest" name="setPackageTrackableRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:setPackageTrackableResponse" name="setPackageTrackableResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addRouteItemToPackage">
+
+         <wsdl:input message="impl:addRouteItemToPackageRequest" name="addRouteItemToPackageRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addRouteItemToPackageResponse" name="addRouteItemToPackageResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPackagesByNameOrId">
+
+         <wsdl:input message="impl:getPackagesByNameOrIdRequest" name="getPackagesByNameOrIdRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getPackagesByNameOrIdResponse" name="getPackagesByNameOrIdResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deletePackage">
+
+         <wsdl:input message="impl:deletePackageRequest" name="deletePackageRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deletePackageResponse" name="deletePackageResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllPackages">
+
+         <wsdl:input message="impl:getAllPackagesRequest" name="getAllPackagesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllPackagesResponse" name="getAllPackagesResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ServiceeSoapBinding" type="impl:Servicee">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="addPackage">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addPackageRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addPackageResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setPackageTrackable">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setPackageTrackableRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setPackageTrackableResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addRouteItemToPackage">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addRouteItemToPackageRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addRouteItemToPackageResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPackagesByNameOrId">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPackagesByNameOrIdRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPackagesByNameOrIdResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deletePackage">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deletePackageRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deletePackageResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllPackages">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllPackagesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllPackagesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ServiceeService">
+
+      <wsdl:port binding="impl:ServiceeSoapBinding" name="Servicee">
+
+         <wsdlsoap:address location="http://localhost:7630/assignment4/services/Servicee"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://DefaultNamespace" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://DefaultNamespace" xmlns:intf="http://DefaultNamespace" xmlns:tns1="http://exceptions.assignment4.sd.utcluj.ro" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://DefaultNamespace" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://exceptions.assignment4.sd.utcluj.ro"/>
+   <element name="blaaa">
+    <complexType/>
+   </element>
+   <element name="blaaaResponse">
+    <complexType>
+     <sequence>
+      <element name="blaaaReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setPackageTrackable">
+    <complexType>
+     <sequence>
+      <element name="trackable" type="xsd:boolean"/>
+      <element name="packageId" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setPackageTrackableResponse">
+    <complexType/>
+   </element>
+   <element name="fault" type="xsd:anyType"/>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="setPackageTrackableRequest">
+
+      <wsdl:part element="impl:setPackageTrackable" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ServiceException">
+
+      <wsdl:part element="impl:fault" name="fault">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="blaaaRequest">
+
+      <wsdl:part element="impl:blaaa" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="setPackageTrackableResponse">
+
+      <wsdl:part element="impl:setPackageTrackableResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="blaaaResponse">
+
+      <wsdl:part element="impl:blaaaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Bla">
+
+      <wsdl:operation name="blaaa">
+
+         <wsdl:input message="impl:blaaaRequest" name="blaaaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:blaaaResponse" name="blaaaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setPackageTrackable">
+
+         <wsdl:input message="impl:setPackageTrackableRequest" name="setPackageTrackableRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:setPackageTrackableResponse" name="setPackageTrackableResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:ServiceException" name="ServiceException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BlaSoapBinding" type="impl:Bla">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="blaaa">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="blaaaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="blaaaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setPackageTrackable">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setPackageTrackableRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setPackageTrackableResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="ServiceException">
+
+            <wsdlsoap:fault name="ServiceException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="BlaService">
+
+      <wsdl:port binding="impl:BlaSoapBinding" name="Bla">
+
+         <wsdlsoap:address location="http://localhost:7630/assignment4/services/Bla"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="assignment4ModelStoreContainer" CdmEntityContainer="assignment4Entities">
+    <EntitySetMapping Name="packages">
+      <EntityTypeMapping TypeName="assignment4Model.package">
+        <MappingFragment StoreEntitySet="package">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="destinationCity" ColumnName="destinationCity" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="senderCity" ColumnName="senderCity" />
+          <ScalarProperty Name="tracking" ColumnName="tracking" />
+          <ScalarProperty Name="receiver_id" ColumnName="receiver_id" />
+          <ScalarProperty Name="sender_id" ColumnName="sender_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="route_item">
+      <EntityTypeMapping TypeName="assignment4Model.route_item">
+        <MappingFragment StoreEntitySet="route_item">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="assignment4Model.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="userType" ColumnName="userType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="package_route_item" TypeName="assignment4Model.package_route_item" StoreEntitySet="package_route_item">
+      <EndProperty Name="route_item">
+        <ScalarProperty Name="id" ColumnName="route_id" />
+      </EndProperty>
+      <EndProperty Name="package">
+        <ScalarProperty Name="id" ColumnName="Package_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

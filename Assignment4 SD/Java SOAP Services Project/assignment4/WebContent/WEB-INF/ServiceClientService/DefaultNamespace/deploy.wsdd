@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ServiceClientService WSDL service -->
+
+  <service name="ServiceClient" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://DefaultNamespace"/>
+      <parameter name="wsdlServiceElement" value="ServiceClientService"/>
+      <parameter name="schemaQualified" value="http://entities.assignment4.sd.utcluj.ro,http://DefaultNamespace,http://dto.assignment4.sd.utcluj.ro"/>
+      <parameter name="wsdlServicePort" value="ServiceClient"/>
+      <parameter name="className" value="ServiceClient"/>
+      <parameter name="wsdlPortType" value="ServiceClient"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://DefaultNamespace" name="addPackage" qname="operNS:addPackage" soapAction="">
+        <parameter xmlns:pns="http://DefaultNamespace" xmlns:tns="http://dto.assignment4.sd.utcluj.ro" qname="pns:p" type="tns:PackageDTO"/>
+      </operation>
+      <operation xmlns:operNS="http://DefaultNamespace" name="setPackageTrackable" qname="operNS:setPackageTrackable" soapAction="">
+        <parameter xmlns:pns="http://DefaultNamespace" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:trackable" type="tns:boolean"/>
+        <parameter xmlns:pns="http://DefaultNamespace" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:packageId" type="tns:long"/>
+      </operation>
+      <operation xmlns:operNS="http://DefaultNamespace" name="addRouteItemToPackage" qname="operNS:addRouteItemToPackage" soapAction="">
+        <parameter xmlns:pns="http://DefaultNamespace" xmlns:tns="http://entities.assignment4.sd.utcluj.ro" qname="pns:routeItem" type="tns:RouteItem"/>
+        <parameter xmlns:pns="http://DefaultNamespace" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:packageId" type="tns:long"/>
+      </operation>
+      <operation xmlns:operNS="http://DefaultNamespace" xmlns:retNS="http://DefaultNamespace" xmlns:rtns="http://dto.assignment4.sd.utcluj.ro" name="getPackagesByNameOrId" qname="operNS:getPackagesByNameOrId" returnQName="retNS:getPackagesByNameOrIdReturn" returnType="rtns:PackageDTO" soapAction="">
+        <parameter xmlns:pns="http://DefaultNamespace" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+        <parameter xmlns:pns="http://DefaultNamespace" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:long"/>
+      </operation>
+      <operation xmlns:operNS="http://DefaultNamespace" name="deletePackage" qname="operNS:deletePackage" soapAction="">
+        <parameter xmlns:pns="http://DefaultNamespace" xmlns:tns="http://dto.assignment4.sd.utcluj.ro" qname="pns:p" type="tns:PackageDTO"/>
+      </operation>
+      <operation xmlns:operNS="http://DefaultNamespace" xmlns:retNS="http://DefaultNamespace" xmlns:rtns="http://dto.assignment4.sd.utcluj.ro" name="getAllPackages" qname="operNS:getAllPackages" returnQName="retNS:getAllPackagesReturn" returnType="rtns:PackageDTO" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="getPackagesByNameOrId addRouteItemToPackage setPackageTrackable addPackage deletePackage getAllPackages"/>
+
+      <typeMapping xmlns:ns="http://entities.assignment4.sd.utcluj.ro" qname="ns:BaseEntity" type="java:ro.utcluj.sd.assignment4.entities.BaseEntity" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <arrayMapping xmlns:ns="http://DefaultNamespace" xmlns:cmp-ns="http://entities.assignment4.sd.utcluj.ro" qname="ns:ArrayOf_tns2_RouteItem" type="java:ro.utcluj.sd.assignment4.entities.RouteItem[]" innerType="cmp-ns:RouteItem" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://entities.assignment4.sd.utcluj.ro" qname="ns:RouteItem" type="java:ro.utcluj.sd.assignment4.entities.RouteItem" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://dto.assignment4.sd.utcluj.ro" qname="ns:PackageDTO" type="java:ro.utcluj.sd.assignment4.dto.PackageDTO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://dto.assignment4.sd.utcluj.ro" qname="ns:UserDTO" type="java:ro.utcluj.sd.assignment4.dto.UserDTO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/main/java/ro/utcluj/sd/ass4/java/BaseEntity.java=UTF-8
+encoding//src/main/java/ro/utcluj/sd/ass4/java/PackageDTO.java=UTF-8
+encoding//src/main/java/ro/utcluj/sd/ass4/java/PackageServiceBean.java=UTF-8
+encoding//src/main/java/ro/utcluj/sd/ass4/java/PackageServiceBeanService.java=UTF-8
+encoding//src/main/java/ro/utcluj/sd/ass4/java/PackageServiceBeanServiceLocator.java=UTF-8
+encoding//src/main/java/ro/utcluj/sd/ass4/java/PackageServiceBeanSoapBindingStub.java=UTF-8
+encoding//src/main/java/ro/utcluj/sd/ass4/java/RouteItem.java=UTF-8
+encoding//src/main/java/ro/utcluj/sd/ass4/java/UserDTO.java=UTF-8

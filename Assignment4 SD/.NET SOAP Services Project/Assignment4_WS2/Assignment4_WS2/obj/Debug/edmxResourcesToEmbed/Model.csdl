@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="assignment4Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="package">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="description" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="destinationCity" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="senderCity" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tracking" Type="Boolean" />
+    <Property Name="receiver_id" Type="Int64" />
+    <Property Name="sender_id" Type="Int64" />
+    <NavigationProperty Name="user" Relationship="Self.FK8awk4mo9i0gw0lj0j6hr2rdm1" FromRole="package" ToRole="user" />
+    <NavigationProperty Name="user1" Relationship="Self.FKlog8q72um5cjcb42tksv9cc0k" FromRole="package" ToRole="user" />
+    <NavigationProperty Name="route_item" Relationship="Self.package_route_item" FromRole="package" ToRole="route_item" />
+  </EntityType>
+  <EntityType Name="route_item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="city" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="packages" Relationship="Self.package_route_item" FromRole="route_item" ToRole="package" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="firstName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userType" Type="Int32" />
+    <NavigationProperty Name="packages" Relationship="Self.FK8awk4mo9i0gw0lj0j6hr2rdm1" FromRole="user" ToRole="package" />
+    <NavigationProperty Name="packages1" Relationship="Self.FKlog8q72um5cjcb42tksv9cc0k" FromRole="user" ToRole="package" />
+  </EntityType>
+  <Association Name="FK8awk4mo9i0gw0lj0j6hr2rdm1">
+    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="package" Type="Self.package" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="package">
+        <PropertyRef Name="sender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKlog8q72um5cjcb42tksv9cc0k">
+    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="package" Type="Self.package" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="package">
+        <PropertyRef Name="receiver_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="package_route_item">
+    <End Role="route_item" Type="Self.route_item" Multiplicity="*" />
+    <End Role="package" Type="Self.package" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="assignment4Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="packages" EntityType="Self.package" />
+    <EntitySet Name="route_item" EntityType="Self.route_item" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <AssociationSet Name="FK8awk4mo9i0gw0lj0j6hr2rdm1" Association="Self.FK8awk4mo9i0gw0lj0j6hr2rdm1">
+      <End Role="user" EntitySet="users" />
+      <End Role="package" EntitySet="packages" />
+    </AssociationSet>
+    <AssociationSet Name="FKlog8q72um5cjcb42tksv9cc0k" Association="Self.FKlog8q72um5cjcb42tksv9cc0k">
+      <End Role="user" EntitySet="users" />
+      <End Role="package" EntitySet="packages" />
+    </AssociationSet>
+    <AssociationSet Name="package_route_item" Association="Self.package_route_item">
+      <End Role="route_item" EntitySet="route_item" />
+      <End Role="package" EntitySet="packages" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

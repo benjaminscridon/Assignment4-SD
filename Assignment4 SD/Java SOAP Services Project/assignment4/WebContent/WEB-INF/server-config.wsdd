@@ -1,0 +1,145 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\DS2016_30245_rus_iacob_daniel_A1.2\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\assignment4\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="Haha" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="setPackageTrackable" qname="ns1:setPackageTrackable" soapAction="" xmlns:ns1="http://DefaultNamespace" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:trackable" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns2:parameter qname="ns1:packageId" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns2:operation>
+  <ns1:parameter name="allowedMethods" value="setPackageTrackable"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="Haha"/>
+  <ns1:parameter name="className" value="Haha"/>
+  <ns1:parameter name="wsdlServicePort" value="Haha"/>
+  <ns1:parameter name="schemaQualified" value="http://DefaultNamespace"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://DefaultNamespace"/>
+  <ns1:parameter name="wsdlServiceElement" value="HahaService"/>
+ </ns1:service>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="Bla" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="blaaa" qname="ns2:blaaa" returnQName="ns2:blaaaReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://DefaultNamespace" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:parameter name="allowedMethods" value="blaaa"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="Bla"/>
+  <ns1:parameter name="className" value="Bla"/>
+  <ns1:parameter name="wsdlServicePort" value="Bla"/>
+  <ns1:parameter name="schemaQualified" value="http://DefaultNamespace"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://DefaultNamespace"/>
+  <ns1:parameter name="wsdlServiceElement" value="BlaService"/>
+ </ns1:service>
+ <ns1:service name="ServiceClient" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="addPackage" qname="ns3:addPackage" soapAction="" xmlns:ns3="http://DefaultNamespace">
+   <ns1:parameter qname="ns3:p" type="ns4:PackageDTO" xmlns:ns4="http://dto.assignment4.sd.utcluj.ro"/>
+  </ns1:operation>
+  <ns1:operation name="setPackageTrackable" qname="ns5:setPackageTrackable" soapAction="" xmlns:ns5="http://DefaultNamespace">
+   <ns1:parameter qname="ns5:trackable" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns5:packageId" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="addRouteItemToPackage" qname="ns6:addRouteItemToPackage" soapAction="" xmlns:ns6="http://DefaultNamespace">
+   <ns1:parameter qname="ns6:routeItem" type="ns7:RouteItem" xmlns:ns7="http://entities.assignment4.sd.utcluj.ro"/>
+   <ns1:parameter qname="ns6:packageId" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="getPackagesByNameOrId" qname="ns8:getPackagesByNameOrId" returnQName="ns8:getPackagesByNameOrIdReturn" returnType="ns9:PackageDTO" soapAction="" xmlns:ns8="http://DefaultNamespace" xmlns:ns9="http://dto.assignment4.sd.utcluj.ro">
+   <ns1:parameter qname="ns8:name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns8:id" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="deletePackage" qname="ns10:deletePackage" soapAction="" xmlns:ns10="http://DefaultNamespace">
+   <ns1:parameter qname="ns10:p" type="ns11:PackageDTO" xmlns:ns11="http://dto.assignment4.sd.utcluj.ro"/>
+  </ns1:operation>
+  <ns1:operation name="getAllPackages" qname="ns12:getAllPackages" returnQName="ns12:getAllPackagesReturn" returnType="ns13:PackageDTO" soapAction="" xmlns:ns12="http://DefaultNamespace" xmlns:ns13="http://dto.assignment4.sd.utcluj.ro"/>
+  <ns1:parameter name="allowedMethods" value="getPackagesByNameOrId addRouteItemToPackage setPackageTrackable addPackage deletePackage getAllPackages"/>
+  <ns1:parameter name="wsdlPortType" value="ServiceClient"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://entities.assignment4.sd.utcluj.ro,http://DefaultNamespace,http://dto.assignment4.sd.utcluj.ro"/>
+  <ns1:parameter name="wsdlServicePort" value="ServiceClient"/>
+  <ns1:parameter name="className" value="ServiceClient"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://DefaultNamespace"/>
+  <ns1:parameter name="wsdlServiceElement" value="ServiceClientService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns14:BaseEntity" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:ro.utcluj.sd.assignment4.entities.BaseEntity" xmlns:ns14="http://entities.assignment4.sd.utcluj.ro"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns15:RouteItem" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:ro.utcluj.sd.assignment4.entities.RouteItem" xmlns:ns15="http://entities.assignment4.sd.utcluj.ro"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns16:PackageDTO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:ro.utcluj.sd.assignment4.dto.PackageDTO" xmlns:ns16="http://dto.assignment4.sd.utcluj.ro"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns17:UserDTO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:ro.utcluj.sd.assignment4.dto.UserDTO" xmlns:ns17="http://dto.assignment4.sd.utcluj.ro"/>
+  <ns1:arrayMapping innerType="ns19:RouteItem" languageSpecificType="java:ro.utcluj.sd.assignment4.entities.RouteItem[]" qname="ns18:ArrayOf_tns2_RouteItem" xmlns:ns18="http://DefaultNamespace" xmlns:ns19="http://entities.assignment4.sd.utcluj.ro"/>
+ </ns1:service>
+ <ns1:service name="PackageServiceBean" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="deletePackage" qname="ns20:deletePackage" soapAction="" xmlns:ns20="http://service.assignment4.sd.utcluj.ro">
+   <ns1:parameter qname="ns20:p" type="ns21:PackageDTO" xmlns:ns21="http://dto.assignment4.sd.utcluj.ro"/>
+  </ns1:operation>
+  <ns1:operation name="getAllPackages" qname="ns22:getAllPackages" returnQName="ns22:getAllPackagesReturn" returnType="ns23:PackageDTO" soapAction="" xmlns:ns22="http://service.assignment4.sd.utcluj.ro" xmlns:ns23="http://dto.assignment4.sd.utcluj.ro"/>
+  <ns1:operation name="setPackageTrackable" qname="ns24:setPackageTrackable" soapAction="" xmlns:ns24="http://service.assignment4.sd.utcluj.ro">
+   <ns1:parameter qname="ns24:trackable" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns24:packageId" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="addRouteItemToPackage" qname="ns25:addRouteItemToPackage" soapAction="" xmlns:ns25="http://service.assignment4.sd.utcluj.ro">
+   <ns1:parameter qname="ns25:routeItem" type="ns26:RouteItem" xmlns:ns26="http://entities.assignment4.sd.utcluj.ro"/>
+   <ns1:parameter qname="ns25:packageId" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="getPackagesByNameOrId" qname="ns27:getPackagesByNameOrId" returnQName="ns27:getPackagesByNameOrIdReturn" returnType="ns28:PackageDTO" soapAction="" xmlns:ns27="http://service.assignment4.sd.utcluj.ro" xmlns:ns28="http://dto.assignment4.sd.utcluj.ro">
+   <ns1:parameter qname="ns27:name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns27:id" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="addPackage" qname="ns29:addPackage" soapAction="" xmlns:ns29="http://service.assignment4.sd.utcluj.ro">
+   <ns1:parameter qname="ns29:p" type="ns30:PackageDTO" xmlns:ns30="http://dto.assignment4.sd.utcluj.ro"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getPackagesByNameOrId addRouteItemToPackage setPackageTrackable addPackage deletePackage getAllPackages"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="PackageServiceBean"/>
+  <ns1:parameter name="className" value="ro.utcluj.sd.assignment4.service.PackageServiceBean"/>
+  <ns1:parameter name="wsdlServicePort" value="PackageServiceBean"/>
+  <ns1:parameter name="schemaQualified" value="http://service.assignment4.sd.utcluj.ro,http://entities.assignment4.sd.utcluj.ro,http://dto.assignment4.sd.utcluj.ro"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://service.assignment4.sd.utcluj.ro"/>
+  <ns1:parameter name="wsdlServiceElement" value="PackageServiceBeanService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns31:BaseEntity" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:ro.utcluj.sd.assignment4.entities.BaseEntity" xmlns:ns31="http://entities.assignment4.sd.utcluj.ro"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns32:RouteItem" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:ro.utcluj.sd.assignment4.entities.RouteItem" xmlns:ns32="http://entities.assignment4.sd.utcluj.ro"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns33:PackageDTO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:ro.utcluj.sd.assignment4.dto.PackageDTO" xmlns:ns33="http://dto.assignment4.sd.utcluj.ro"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns34:UserDTO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:ro.utcluj.sd.assignment4.dto.UserDTO" xmlns:ns34="http://dto.assignment4.sd.utcluj.ro"/>
+  <ns1:arrayMapping innerType="ns36:RouteItem" languageSpecificType="java:ro.utcluj.sd.assignment4.entities.RouteItem[]" qname="ns35:ArrayOf_tns2_RouteItem" xmlns:ns35="http://service.assignment4.sd.utcluj.ro" xmlns:ns36="http://entities.assignment4.sd.utcluj.ro"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.URLMapper"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

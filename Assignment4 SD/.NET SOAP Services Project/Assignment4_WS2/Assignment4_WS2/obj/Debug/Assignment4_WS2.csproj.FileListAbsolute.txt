@@ -1,0 +1,80 @@
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\ApplicationInsights.config
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Assignment4_WS2.dll.config
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Assignment4_WS2.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Assignment4_WS2.pdb
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\EntityFramework.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\EntityFramework.SqlServer.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.Agent.Intercept.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.DependencyCollector.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.Web.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.WindowsServer.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.ApplicationInsights.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.Diagnostics.Tracing.EventSource.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.Threading.Tasks.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.Threading.Tasks.Extensions.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Newtonsoft.Json.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\System.IO.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\System.Runtime.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\System.Threading.Tasks.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\EntityFramework.xml
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\EntityFramework.SqlServer.xml
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.DependencyCollector.xml
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.Web.xml
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.WindowsServer.xml
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.ApplicationInsights.xml
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.Diagnostics.Tracing.EventSource.xml
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.Threading.Tasks.xml
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.Threading.Tasks.Extensions.xml
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\Newtonsoft.Json.xml
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\System.IO.xml
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\System.Runtime.xml
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\bin\System.Threading.Tasks.xml
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\obj\Debug\Assignment4_WS2.csproj.App.config
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\obj\Debug\Assignment4_WS2.csprojResolveAssemblyReference.cache
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\obj\Debug\Assignment4_WS2.dll
+C:\DS2016_30245_rus_iacob_daniel_A1.2\Assignment4_WS2\Assignment4_WS2\obj\Debug\Assignment4_WS2.pdb
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\ApplicationInsights.config
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Assignment4_WS2.dll.config
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Assignment4_WS2.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Assignment4_WS2.pdb
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\EntityFramework.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\EntityFramework.SqlServer.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.Agent.Intercept.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.DependencyCollector.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.PerfCounterCollector.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.ServerTelemetryChannel.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.Web.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.WindowsServer.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.ApplicationInsights.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.Diagnostics.Tracing.EventSource.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.Threading.Tasks.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.Threading.Tasks.Extensions.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Newtonsoft.Json.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\System.IO.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\System.Runtime.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\System.Threading.Tasks.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\EntityFramework.xml
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\EntityFramework.SqlServer.xml
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.DependencyCollector.xml
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.ServerTelemetryChannel.xml
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.Web.xml
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.AI.WindowsServer.xml
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.ApplicationInsights.xml
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.Diagnostics.Tracing.EventSource.xml
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.Threading.Tasks.xml
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.Threading.Tasks.Extensions.xml
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\Newtonsoft.Json.xml
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\System.IO.xml
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\System.Runtime.xml
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\bin\System.Threading.Tasks.xml
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\obj\Debug\Assignment4_WS2.csproj.App.config
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\obj\Debug\Assignment4_WS2.csprojResolveAssemblyReference.cache
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\obj\Debug\Assignment4_WS2.dll
+U:\A4 SD\.NET SOAP Services Project\Assignment4_WS2\Assignment4_WS2\obj\Debug\Assignment4_WS2.pdb
